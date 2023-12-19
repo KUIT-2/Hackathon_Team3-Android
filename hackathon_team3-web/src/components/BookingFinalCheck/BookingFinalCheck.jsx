@@ -1,19 +1,14 @@
-import React from "react";
-import BookingBar from "../BookingBar/BookingBar";
+import React from 'react'
+import BookingBar from '../BookingBar/BookingBar'
 
-import * as O from "../BookingCheck/BookingCheck.styles";
-import * as S from "./BookingFinalCheck.styles";
+import * as O from "../BookingCheck/BookingCheck.styles"
+import * as S from "./BookingFinalCheck.styles"
 
-import {
-  IconCalender,
-  IconClock,
-  IconUsers,
-  IconUncheck,
-} from "../../assets/index";
+import { IconCalender, IconClock, IconUsers, IconUncheck } from "../../assets/index"
 import { useState } from 'react';
-import BookingFinish from '../BookingFinish/BookingFinish'
+import BookingFinish from './../BookingFinish/BookingFinish';
 
-const BookingFinalCheck = ({ store, nowDate, selectedMember, time, setIsBookingOpen }) => {
+const BookingFinalCheck = ({ store, nowDate, nowDay, selectedMember, time, setIsBookingOpen }) => {
 
   const [isNext, setIsNext] = useState(false);
 
@@ -24,13 +19,7 @@ const BookingFinalCheck = ({ store, nowDate, selectedMember, time, setIsBookingO
 
   return (
     !isNext ? (
-      <BookingBar
-      leftBtn={"취소"}
-      rightBtn={"예약 확정"}
-      setIsBookingOpen={setIsBookingOpen}
-      rightBtnOnClick={() => handleRightBtnClick()}
-      leftBtnOnClick={() => setIsBookingOpen(false)}
-    >
+        <BookingBar leftBtn={"취소"} rightBtn={"예약 확정"} setIsBookingOpen={setIsBookingOpen} rightBtnOnClick={() => handleRightBtnClick()}>
         <O.BookingCheckHeading>예약을 최종 확정하시겠어요?</O.BookingCheckHeading>
         <div style={{background: '#D9D9D9', height: '3px',}}></div>
         <O.BookingCheckName>{store.name}</O.BookingCheckName>
@@ -38,7 +27,7 @@ const BookingFinalCheck = ({ store, nowDate, selectedMember, time, setIsBookingO
         <O.BookingCheckContainer>
             <O.Icon>
                 <IconCalender></IconCalender>
-                <O.IconLabel>{nowDate}</O.IconLabel>
+                <O.IconLabel>{nowDate} ({nowDay})</O.IconLabel>
             </O.Icon>
             <O.Icon>
                 <IconClock></IconClock>
@@ -59,9 +48,9 @@ const BookingFinalCheck = ({ store, nowDate, selectedMember, time, setIsBookingO
             <S.BookingCheckInputLabel>다시 보지 않기</S.BookingCheckInputLabel>
         </S.BookingCheckInput>
     </BookingBar>
-    ) : (<BookingFinish store={store} nowDate={nowDate} selectedMember={selectedMember} time={time} setIsBookingOpen={setIsBookingOpen}></BookingFinish>)
+    ) : (<BookingFinish store={store} nowDate={nowDate} nowDay={nowDay} selectedMember={selectedMember} time={time} setIsBookingOpen={setIsBookingOpen}></BookingFinish>)
     
   )
 }
 
-export default BookingFinalCheck;
+export default BookingFinalCheck
