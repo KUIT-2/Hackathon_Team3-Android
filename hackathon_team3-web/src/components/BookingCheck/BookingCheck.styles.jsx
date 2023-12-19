@@ -31,4 +31,29 @@ export const BookingCheckLabel = styled.div`
 export const BookingCheckContainer = styled.div`
     display: flex;
     margin-top: 32px;
+    justify-content: center;
+`
+
+export const Icon = styled.div`
+    margin-right: 48px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+`
+
+export const IconLabel = styled.span`
+    color: #222;
+    margin-top: 12px;
+    text-size: 12px;
+    text-align: center;
+`
+
+export const BookingCheckWarning = styled.div`
+    color: #6B6B6B;
+    font-size: 14px;
+    margin-left: 30px;
+    margin-right: 25px;
+    margin-top: 60px;
+    line-height: 20px;
 `
