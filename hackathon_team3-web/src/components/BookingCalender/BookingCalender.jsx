@@ -6,8 +6,10 @@ import './Calendar.css'
 import moment from "moment"
 
 import * as S from "./BookingCalender.styles"
+import BookingTime from './BookingTime';
 
 const BookingCalender = ({ setIsBookingOpen }) => {
+
   const numberOfMembers = 80;
   const [selectedMember, setSelectedMember] = useState(0);
 
@@ -17,6 +19,14 @@ const BookingCalender = ({ setIsBookingOpen }) => {
 
   const memberComponents = Array.from({ length: numberOfMembers }, (_, index) => (
     <BookingMember
+      key={index}
+      text={`${index + 1}`}
+      onClick={() => setMembers(index + 1)}
+    />
+  ));
+
+  const timeComponents = Array.from({ length: 10 }, (_, index) => (
+    <BookingTime
       key={index}
       text={`${index + 1}`}
       onClick={() => setMembers(index + 1)}
@@ -63,6 +73,9 @@ const BookingCalender = ({ setIsBookingOpen }) => {
     <S.BookingMemberContainer>
       {memberComponents}
     </S.BookingMemberContainer>
+    <S.BookingTimeContainer>
+      {timeComponents}
+    </S.BookingTimeContainer>
     </BookingBar>
   );
 };
