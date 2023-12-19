@@ -1,13 +1,14 @@
 import React, { useState } from "react";
 import * as S from "./Tab.styles";
+import MenuBox from "../MenuBox/MenuBox";
 
-const Tab = () => {
+const Tab = ({ menus }) => {
   const [activeTab, setActiveTab] = useState(0);
   const handleTabClick = (index) => {
     setActiveTab(index);
   };
   const renderTabContent = () => {
-    const tabContents = ["Home", "Menu", "Photo", "Review"];
+    const tabContents = ["", <MenuBox menus={menus} />, "Photo", "Review"];
 
     return tabContents[activeTab];
   };

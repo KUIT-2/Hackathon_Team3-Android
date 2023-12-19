@@ -1,14 +1,20 @@
 import React, { useState } from "react";
 import * as S from "./Store.styles";
-import { ReactComponent as ArrowLeft } from "../../asset/arrow-left.svg";
-import { ReactComponent as Home } from "../../asset/home.svg";
-import { ReactComponent as BookMark } from "../../asset/header-mark.svg";
-import { ReactComponent as Share } from "../../asset/share.svg";
-import { ReactComponent as Call } from "../../asset/call.svg";
-import Tab from "../../components/Tab";
+import { ArrowLeft, Home, BookMark, Share, Call } from "../../asset";
+import Tab from "../../components/Tab/Tab";
+import { useNavigate } from "react-router-dom";
 
 const Store = () => {
-  const [isAvailable, setIsAvailable] = useState(false);
+  const menus = [
+    { name: "철판쭈꾸미", price: 14000 },
+    { name: "소금구이", price: 15000 },
+    { name: "철판쭈꾸미삼겹", price: 16000 },
+  ];
+  const [isAvailable, setIsAvailable] = useState(true);
+  const navigate = useNavigate();
+  const handleBookingButtonClick = () => {
+    if (isAvailable) navigate("/booking");
+  };
   return (
     <>
       <S.Header>
@@ -38,7 +44,7 @@ const Store = () => {
         <p>레스토랑 함께 고르기</p>
         <button className="add-btn">+담기</button>
       </S.AddBar>
-      <Tab />
+      <Tab menus={menus} />
       <S.Location>
         <h4>매장 위치</h4>
         <p>매장 주소</p>
@@ -57,7 +63,10 @@ const Store = () => {
       </S.DetailInfo>
       <S.Footer>
         <BookMark />
-        <S.BookingButton isAvailable={isAvailable}>
+        <S.BookingButton
+          onClick={handleBookingButtonClick}
+          isAvailable={isAvailable}
+        >
           {isAvailable ? "웨이팅 등록하기" : "바로 입장 가능해요"}
         </S.BookingButton>
       </S.Footer>
