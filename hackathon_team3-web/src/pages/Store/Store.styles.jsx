@@ -16,6 +16,11 @@ export const Header = styled.div`
     gap: 15px;
     align-items: center;
   }
+  path,
+  circle,
+  line {
+    stroke: ${(props) => (props.isScrolled ? "black" : "white")};
+  }
   transition: background-color 0.5s ease;
 `;
 
