@@ -3,6 +3,7 @@ import * as S from "./Store.styles";
 import { ArrowLeft, Home, BookMark, Share, Call } from "../../asset";
 import Tab from "../../components/Tab/Tab";
 import { useNavigate } from "react-router-dom";
+import Booking from "../Booking/Booking";
 
 const Store = () => {
   const menus = [
@@ -12,9 +13,12 @@ const Store = () => {
   ];
   const photos = ["1", "2", "3", "4", "5", "6", "7"];
   const [isAvailable, setIsAvailable] = useState(true);
-  const navigate = useNavigate();
+  const [isBookingOpen, setIsBookingOpen] = useState(false);
+
   const handleBookingButtonClick = () => {
-    if (isAvailable) navigate("/booking");
+    if (isAvailable) {
+      setIsBookingOpen(true);
+    }
   };
   return (
     <>
@@ -71,6 +75,7 @@ const Store = () => {
           {isAvailable ? "웨이팅 등록하기" : "바로 입장 가능해요"}
         </S.BookingButton>
       </S.Footer>
+      {isBookingOpen ? <Booking setIsBookingOpen={setIsBookingOpen} /> : null}
     </>
   );
 };

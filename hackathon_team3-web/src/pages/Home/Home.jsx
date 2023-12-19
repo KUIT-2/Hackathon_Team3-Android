@@ -1,29 +1,28 @@
 import React from "react";
-import styled from 'styled-components';
+import styled from "styled-components";
 
 import HomeBottomBar from "../../components/HomeBottomBar";
 import HomeTop from "../../components/HomeTop";
 import LocationCategory from "../../components/LocationCategory";
 
-import BestIcon from '../../assets/Best.png'
-import OnlineWaitingIcon from '../../assets/OnlineWaiting.png'
-import HiddenPlaceIcon from '../../assets/HiddenPlace.png'
-import CakeIcon from '../../assets/Cake.png'
-import DeliciousSpotIcon from '../../assets/DeliciousSpot.png'
-import YearEndBookingIcon from '../../assets/YearEndBooking.png'
-import GroupBookingIcon from '../../assets/GroupBooking.png'
-import WineDeliveryIcon from '../../assets/WineDelivery.png'
-import MonthBestIcon from '../../assets/MonthBest.png'
-import WaitingTopIcon from '../../assets/WaitingTop.png'
-import OmakaseIcon from '../../assets/Omakase.png'
-import CowmakaseIcon from '../../assets/Cowmakase.png'
-import HotelDiningIcon from '../../assets/HotelDining.png'
-import SaveTopIcon from '../../assets/SaveTop.png'
+import BestIcon from "../../assets/Best.png";
+import OnlineWaitingIcon from "../../assets/OnlineWaiting.png";
+import HiddenPlaceIcon from "../../assets/HiddenPlace.png";
+import CakeIcon from "../../assets/Cake.png";
+import DeliciousSpotIcon from "../../assets/DeliciousSpot.png";
+import YearEndBookingIcon from "../../assets/YearEndBooking.png";
+import GroupBookingIcon from "../../assets/GroupBooking.png";
+import WineDeliveryIcon from "../../assets/WineDelivery.png";
+import MonthBestIcon from "../../assets/MonthBest.png";
+import WaitingTopIcon from "../../assets/WaitingTop.png";
+import OmakaseIcon from "../../assets/Omakase.png";
+import CowmakaseIcon from "../../assets/Cowmakase.png";
+import HotelDiningIcon from "../../assets/HotelDining.png";
+import SaveTopIcon from "../../assets/SaveTop.png";
 
 const BannerImage = styled.div`
-  width: 375px;
   height: 260px;
-  background: #D9D9D9;
+  background: #d9d9d9;
   margin-top: 10px;
 `;
 
@@ -53,7 +52,7 @@ const CategoryText = styled.div`
 
 const BorderGray = styled.div`
   height: 21px;
-  background: #F9F8F8;
+  background: #f9f8f8;
 `;
 
 const Where = styled.div`
@@ -138,12 +137,12 @@ const Home = () => {
 
       <BorderGray />
       <Where>어디로 가시나요?</Where>
-      
+
       <LocationCategory />
 
       <HomeBottomBar />
     </div>
-  )
+  );
 };
 
 export default Home;
