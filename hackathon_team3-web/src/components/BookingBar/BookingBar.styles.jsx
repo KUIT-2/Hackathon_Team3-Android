@@ -11,12 +11,12 @@ export const Outer = styled.div`
 `;
 
 export const BookingBarContainer = styled.div`
-  width: 100%;
-  position: fixed;
-  bottom: 0px;
-  border-radius: 24px;
-  background: white;
-`;
+    width: 100%;
+    position: fixed;
+    bottom: 0px;
+    border-radius: 24px;
+    background: #eee;
+`
 
 export const BookingBtns = styled.div`
   display: flex;
