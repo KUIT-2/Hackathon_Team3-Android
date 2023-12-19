@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const Header = styled.div`
+  z-index: 1;
   display: flex;
   justify-content: space-between;
   width: 100%;
@@ -14,11 +15,6 @@ export const Header = styled.div`
     gap: 15px;
     align-items: center;
   }
-`;
-
-export const StoreImage = styled.div`
-  height: 250px;
-  background-color: #d9d9d9;
 `;
 
 export const StoreInfoBox = styled.div`

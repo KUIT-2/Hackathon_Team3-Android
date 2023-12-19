@@ -4,6 +4,7 @@ import { ArrowLeft, Home, BookMark, Share, Call } from "../../asset";
 import Tab from "../../components/Tab/Tab";
 import { useNavigate } from "react-router-dom";
 import Booking from "../Booking/Booking";
+import StorePhotoSlider from "../../components/StorePhotoSlider/StorePhotoSlider";
 
 const Store = () => {
   const menus = [
@@ -12,6 +13,7 @@ const Store = () => {
     { name: "철판쭈꾸미삼겹", price: 16000 },
   ];
   const photos = ["1", "2", "3", "4", "5", "6", "7"];
+  const storephotos = ["1", "2", "3", "4"];
   const reviews = [
     {
       user: "부드러운 맛사냥꾼_99356",
@@ -49,7 +51,7 @@ const Store = () => {
           <Share />
         </div>
       </S.Header>
-      <S.StoreImage></S.StoreImage>
+      <StorePhotoSlider photos={storephotos} />
       <S.StoreInfoBox>
         <h3>음식점이름</h3>
         <p>음식점 소개</p>
