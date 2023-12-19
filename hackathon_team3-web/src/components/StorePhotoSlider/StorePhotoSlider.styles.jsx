@@ -14,7 +14,7 @@ export const IndexBox = styled.div`
   right: 20px;
   border-radius: 20px;
   background-color: #0f0a04;
-  border: 2px solid white;
+  border: 1px solid white;
   color: white;
   padding: 5px 10px;
 `;
