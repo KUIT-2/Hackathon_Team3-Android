@@ -4,6 +4,7 @@ import { ReactComponent as ArrowLeft } from "../../asset/arrow-left.svg";
 import { ReactComponent as Home } from "../../asset/home.svg";
 import { ReactComponent as BookMark } from "../../asset/header-mark.svg";
 import { ReactComponent as Share } from "../../asset/share.svg";
+import Tab from "../../components/Tab";
 
 const Header = styled.div`
   display: flex;
@@ -102,6 +103,7 @@ const Store = () => {
         <p>레스토랑 함께 고르기</p>
         <button className="add-btn">+담기</button>
       </AddBar>
+      <Tab />
     </>
   );
 };
