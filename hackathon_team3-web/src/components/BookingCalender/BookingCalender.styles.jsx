@@ -5,11 +5,11 @@ export const BookingCalenderHeader = styled.div`
 `
 
 export const BookingCalenderToday = styled.div`
-    width: wrap-content;
+    position: absolute;
     margin-top: 32px;
     margin-left: 32px;
     color: #ff3d00;
-    text-size: 14px;
+    font-size: 14px;
     text-decoration: underline;
 `
 
@@ -18,11 +18,27 @@ export const CalendarContainer = styled.div`
     justify-content: center;
 
     .calendar {
-        margin-top: 32px;
-        .react-calendar__tile--active:enabled:hover,
-        .react-calendar__tile--active:enabled:focus {
+        margin-top: 16px;
+        line-height: 2rem;
+        .react-calendar__navigation {
+            display: flex;
+            margin-left: 65px;
+            height: 44px;
+            margin-bottom: 1em;
+            width: 60%;
+            justify-content: center;
+          }
+        .react-calendar__navigation__label > span {
+            font-size: 14px;
+            font-weight: 500;
+            color: #000;
+        }
+        .react-calendar__month-view__weekdays__weekday abbr {
+            text-decoration: none;
+        }
+        .react-calendar__tile--active {
             width: 30px;
-            height: 30px;
+            height: 50px;
             color: #fff;
             background: #ff3d00;
             border-radius: 100%;
@@ -41,7 +57,7 @@ export const BookingMemberContainer = styled.div`
 export const BookingMember = styled.div`
     display: flex;
     padding: 10px;
-    width: 44px;
+    width: 50px;
     height: 44px;
     border-radius: 100%;
     border: 1px solid #D9D9D9;
@@ -51,10 +67,4 @@ export const BookingMember = styled.div`
     text-size: 14px;
     color: #222;
 
-    ${({ isSelected }) =>
-    isSelected &&
-    `
-      color: #fff; /* Text color when selected */
-      background-color: #3498db; /* Background color when selected */
-    `}
 `

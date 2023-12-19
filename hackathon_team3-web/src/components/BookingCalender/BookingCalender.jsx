@@ -7,17 +7,20 @@ import moment from "moment"
 
 import * as S from "./BookingCalender.styles"
 
-
 const BookingCalender = ({ setIsBookingOpen }) => {
   const numberOfMembers = 80;
-  const [isSelected, setIsSelected] = useState(false);
+  const [selectedMember, setSelectedMember] = useState(0);
+
+  const setMembers = ( member ) => {
+    setSelectedMember(member)
+    console.log(selectedMember)
+  }
 
   const memberComponents = Array.from({ length: numberOfMembers }, (_, index) => (
     <BookingMember
       key={index}
       text={`${index + 1}`}
-      isSelected={false}
-      onClick={memberSelect()}
+      onClick={() => setMembers(index + 1)}
     />
   ));
 
@@ -29,9 +32,6 @@ const BookingCalender = ({ setIsBookingOpen }) => {
     setNowDate(moment(selectedDate).format("MM월 DD일"))
   }
 
-  const memberSelect = () => {
-  }
-
   return (
     <BookingBar leftBtn={"취소"} rightBtn={"확인"} setIsBookingOpen={setIsBookingOpen} >
       <S.BookingCalenderHeader>
@@ -41,7 +41,12 @@ const BookingCalender = ({ setIsBookingOpen }) => {
         <Calendar
           className={"calendar"}
           onChange={handlerDateChange}
-          value={value}></Calendar>
+          value={value}
+          formatDay={(locale, date) => date.getDate()}
+          next2Label={null}
+          prev2Label={null}
+        >
+        /</Calendar>
       </S.CalendarContainer>
       <div style={{
         background: '#D9D9D9',
@@ -57,5 +62,3 @@ const BookingCalender = ({ setIsBookingOpen }) => {
 };
 
 export default BookingCalender
-
-// 서현이 넘 예뻐~ 귀여엉 정답 경은언니
