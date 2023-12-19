@@ -10,7 +10,7 @@ import BookingTime from "./BookingTime";
 import { getTime } from "../../apis/bookingApi";
 import BookingCheck from "../BookingCheck/BookingCheck";
 
-const BookingCalender = ({ storeId, setIsBookingOpen }) => {
+const BookingCalender = ({ store, storeId, setIsBookingOpen }) => {
   const [isNext, setIsNext] = useState(false);
 
   const numberOfMembers = 20;
@@ -54,6 +54,7 @@ const BookingCalender = ({ storeId, setIsBookingOpen }) => {
 
   const [value, onChange] = useState(new Date());
   const [nowDate, setNowDate] = useState("날짜");
+  const [nowDay, setNowDay] = useState("요일");
 
   const getTime = async (storeId) => {
     try {
@@ -112,12 +113,18 @@ const BookingCalender = ({ storeId, setIsBookingOpen }) => {
 
   const handlerDateChange = (selectedDate) => {
     onChange(selectedDate);
+    const daysOfWeek = ['일', '월', '화', '수', '목', '금', '토'];
+    setNowDay(daysOfWeek[selectedDate.getDay()]);
     setNowDate(moment(selectedDate).format("MM월 DD일"));
   };
 
   const setToday = () => {
     const today = new Date();
     onChange(today);
+  };
+
+  const setTime = (startTime) => {
+    setTimes(prevTimes => [...prevTimes, startTime]);
   };
 
   useEffect(() => {
@@ -136,10 +143,6 @@ const BookingCalender = ({ storeId, setIsBookingOpen }) => {
         .format("HH:mm");
       return { startTime, endTime };
     });
-
-    const setTime = (startTime) => {
-      setTimes(prevTimes => [...prevTimes, startTime]);
-    };
 
     const components = timeIntervals.map((timeInterval, index) => (
       <BookingTime
@@ -190,7 +193,7 @@ const BookingCalender = ({ storeId, setIsBookingOpen }) => {
         {timeComponents}
       </S.BookingTimeContainer>
     </BookingBar>)
-    : (<BookingCheck nowDate={nowDate} setIsBookingOpen={setIsBookingOpen} selectedMember={selectedMember} time={times}></BookingCheck>)
+    : (<BookingCheck store={store} nowDate={nowDate} nowDay={nowDay} setIsBookingOpen={setIsBookingOpen} selectedMember={selectedMember} time={times}></BookingCheck>)
   );
    
 };

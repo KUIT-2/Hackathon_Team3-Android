@@ -21,31 +21,31 @@ export const CalendarContainer = styled.div`
     margin-top: 16px;
     line-height: 2rem;
 
-        .react-calendar__navigation {
-            display: flex;
-            margin-left: 65px;
-            height: 44px;
-            margin-bottom: 1em;
-            width: 60%;
-            justify-content: center;
-          }
-        .react-calendar__navigation__label > span {
-            font-size: 16px;
-            font-weight: 500;
-            color: #000;
-        }
-        .react-calendar__month-view__weekdays__weekday abbr {
-            text-decoration: none;
-        }
-        .react-calendar__tile--active {
-            width: 15px;
-            height: 50px;
-            color: #fff;
-            background: #ff3d00;
-            border-radius: 100%;
-        }
+    .react-calendar__navigation {
+      display: flex;
+      margin-left: 65px;
+      height: 44px;
+      margin-bottom: 1em;
+      width: 60%;
+      justify-content: center;
     }
-`
+    .react-calendar__navigation__label > span {
+      font-size: 16px;
+      font-weight: 500;
+      color: #000;
+    }
+    .react-calendar__month-view__weekdays__weekday abbr {
+      text-decoration: none;
+    }
+    .react-calendar__tile--active {
+      width: 15px;
+      height: 50px;
+      color: #fff;
+      background: #ff3d00;
+      border-radius: 100%;
+    }
+  }
+`;
 
 export const BookingMemberContainer = styled.div`
   display: flex;
@@ -58,14 +58,14 @@ export const BookingMemberContainer = styled.div`
 `;
 
 export const BookingTimeContainer = styled.div`
-    display: flex;
-    overflow-x: auto;
-    white-space: nowrap;
-    margin-top: 32px;
-    margin-left: 24px;
-    margin-right: 24px;
-    gap: 12px;
-`
+  display: flex;
+  overflow-x: auto;
+  white-space: nowrap;
+  margin-top: 32px;
+  margin-left: 24px;
+  margin-right: 24px;
+  gap: 12px;
+`;
 
 export const BookingMember = styled.div`
     display: flex;

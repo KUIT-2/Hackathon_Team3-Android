@@ -140,7 +140,7 @@ const Store = () => {
         </S.BookingButton>
       </S.Footer>
       {isBookingOpen ? (
-        <Booking storeId={storeId} setIsBookingOpen={setIsBookingOpen} />
+        <Booking store={store} storeId={storeId} setIsBookingOpen={setIsBookingOpen} />
       ) : null}
     </>
   );

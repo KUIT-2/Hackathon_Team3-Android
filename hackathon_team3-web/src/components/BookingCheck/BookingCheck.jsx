@@ -6,7 +6,7 @@ import * as S from "./BookingCheck.styles";
 import { IconCalender, IconClock, IconUsers } from "../../assets/index";
 import { useState } from "react";
 
-const BookingCheck = ({ nowDate, setIsBookingOpen, selectedMember, times }) => {
+const BookingCheck = ({ store, nowDate, nowDay, setIsBookingOpen, selectedMember, times }) => {
   const [isNext, setIsNext] = useState(false);
 
   const handleRightBtnClick = () => {
@@ -21,16 +21,16 @@ const BookingCheck = ({ nowDate, setIsBookingOpen, selectedMember, times }) => {
         <S.BookingCheckHeading>내일 방문이 맞으신가요?</S.BookingCheckHeading>
         <div style={{background: '#D9D9D9', height: '3px',}}></div>
         <S.BookingCheckSubheading>방문 일정을 다시 한 번 확인해 주세요.</S.BookingCheckSubheading>
-        <S.BookingCheckName>센시티브서울</S.BookingCheckName>
-        <S.BookingCheckLabel>한남동 · 이탈리아 음식</S.BookingCheckLabel>
+        <S.BookingCheckName>{store.name}</S.BookingCheckName>
+        <S.BookingCheckLabel>{store.region} · {store.category}</S.BookingCheckLabel>
         <S.BookingCheckContainer>
             <S.Icon>
                 <IconCalender></IconCalender>
-                <S.IconLabel>{nowDate}</S.IconLabel>
+                <S.IconLabel>{nowDate} ({nowDay})</S.IconLabel>
             </S.Icon>
             <S.Icon>
                 <IconClock></IconClock>
-                <S.IconLabel>오후 {times}</S.IconLabel>
+                <S.IconLabel>{times}</S.IconLabel>
             </S.Icon>
             <S.Icon style={{'marginRight': '0px'}}>
                 <IconUsers></IconUsers>
@@ -41,11 +41,7 @@ const BookingCheck = ({ nowDate, setIsBookingOpen, selectedMember, times }) => {
             다른 고객님께도 피해가 될 수 있으므로 신중히 예약 부탁드립니다 :)
         </S.BookingCheckWarning>
     </BookingBar>
-    ): (<BookingFinalCheck
-            setIsBookingOpen={setIsBookingOpen}
-            nowDate={nowDate} 
-            selectedMember={selectedMember} time={times}
-            ></BookingFinalCheck>)
+    ): (<BookingFinalCheck store={store} nowDate={nowDate} nowDay={nowDay} selectedMember={selectedMember} time={times} setIsBookingOpen={setIsBookingOpen}></BookingFinalCheck>)
   )
 };
 
