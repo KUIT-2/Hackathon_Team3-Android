@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const Outer = styled.div`
+  z-index: 2;
   position: fixed;
   top: 0;
   bottom: 0;
@@ -11,12 +12,13 @@ export const Outer = styled.div`
 `;
 
 export const BookingBarContainer = styled.div`
-    width: 100%;
-    position: fixed;
-    bottom: 0px;
-    border-radius: 24px;
-    background: #FFF;
-`
+  z-index: 3;
+  width: 100%;
+  position: fixed;
+  bottom: 0px;
+  border-radius: 24px;
+  background: #fff;
+`;
 
 export const BookingBtns = styled.div`
   display: flex;
