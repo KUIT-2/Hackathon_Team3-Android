@@ -13,7 +13,6 @@ const BookingCalender = ({ setIsBookingOpen }) => {
 
   const setMembers = ( member ) => {
     setSelectedMember(member)
-    console.log(selectedMember)
   }
 
   const memberComponents = Array.from({ length: numberOfMembers }, (_, index) => (
