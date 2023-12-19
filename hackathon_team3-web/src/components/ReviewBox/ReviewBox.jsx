@@ -13,12 +13,12 @@ const ReviewBox = ({ reviews }) => {
           <S.Rate>
             <div className="rate-wrapper">
               <span className="star">★</span>
-              <p className="number">{review.rate.toFixed(1)}</p>
+              <p className="number">{review.rating.toFixed(1)}</p>
             </div>
-            <span className="date">{review.date}</span>
+            <span className="date">{review.date.slice(0, 10)}</span>
           </S.Rate>
-          <S.Photo key={index} src={review.photo} alt="사진" />
-          <S.Description>{review.description}</S.Description>
+          <S.Photo key={index} src={review.imageUrl} alt="사진" />
+          <S.Description>{review.contents}</S.Description>
         </S.Container>
       ))}
     </>
