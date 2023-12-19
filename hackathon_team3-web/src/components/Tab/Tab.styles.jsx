@@ -17,6 +17,10 @@ export const TabMenusContainer = styled.div`
     border-bottom: 3px solid #d9d9d9;
     color: #989898;
   }
+  .number {
+    font-size: 13px;
+    color: #989898;
+  }
 `;
 
 export const TabMenu = styled.div`

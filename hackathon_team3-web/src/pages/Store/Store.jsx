@@ -58,11 +58,8 @@ const Store = () => {
 
   useEffect(() => {
     fetchStore();
-    console.log("Store: ", store);
     fetchReviews();
-    console.log("Reviews :", reviews);
     fetchPhotos();
-    console.log("Photos :", photos);
   }, []);
 
   const [isScrolled, setIsScrolled] = useState(false);
@@ -112,6 +109,9 @@ const Store = () => {
           <span className="rate">{store.rating.toFixed(1)}</span>
           <span className="review">({reviews.length})</span>
         </span>
+        {store.lunchPrice === store.dinnerPrice ? (
+          <p className="price">점심 저녁 동일가 {store.lunchPrice}</p>
+        ) : null}
       </S.StoreInfoBox>
       <Tab menus={menus} photos={photos} reviews={reviews} />
       <S.Location>
