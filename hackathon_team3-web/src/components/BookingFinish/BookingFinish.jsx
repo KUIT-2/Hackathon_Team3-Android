@@ -3,10 +3,16 @@ import BookingBar from '../BookingBar/BookingBar'
 
 import * as O from "../BookingCheck/BookingCheck.styles"
 import * as S from "./BookingFinish.styles"
+import { useNavigate } from 'react-router-dom'
 
-const BookingFinish = () => {
+const BookingFinish = ({ setIsBookingOpen }) => {
+  const navigate = useNavigate();
+
   return (
-    <BookingBar leftBtn={"메인으로 가기"} rightBtn={"예약내역 확인"} >
+    <BookingBar leftBtn={"메인으로 가기"} rightBtn={"예약내역 확인"}
+      setIsBookingOpen={setIsBookingOpen} 
+      leftBtnOnClick={() =>  navigate('/')}
+      >
         <O.BookingCheckHeading>예약이 완료되었습니다.</O.BookingCheckHeading>
         <S.BookingStoreContainer>
             <S.BookingStoreLabel>레스토랑 이름</S.BookingStoreLabel>

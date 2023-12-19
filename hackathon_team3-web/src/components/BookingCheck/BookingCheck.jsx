@@ -20,6 +20,7 @@ const BookingCheck = ({ setIsBookingOpen }) => {
       rightBtn={"확인"}
       setIsBookingOpen={setIsBookingOpen}
       rightBtnOnClick={() => handleRightBtnClick()}
+      leftBtnOnClick={() => setIsBookingOpen(false)}
     >
       <S.BookingCheckHeading>내일 방문이 맞으신가요?</S.BookingCheckHeading>
       <div style={{ background: "#D9D9D9", height: "3px" }}></div>

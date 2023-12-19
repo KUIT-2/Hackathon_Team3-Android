@@ -29,6 +29,7 @@ const BookingFinalCheck = ({ setIsBookingOpen }) => {
       rightBtn={"예약 확정"}
       setIsBookingOpen={setIsBookingOpen}
       rightBtnOnClick={() => handleRightBtnClick()}
+      leftBtnOnClick={() => setIsBookingOpen(false)}
     >
         <O.BookingCheckHeading>예약을 최종 확정하시겠어요?</O.BookingCheckHeading>
         <div style={{background: '#D9D9D9', height: '3px',}}></div>
@@ -58,7 +59,7 @@ const BookingFinalCheck = ({ setIsBookingOpen }) => {
             <S.BookingCheckInputLabel>다시 보지 않기</S.BookingCheckInputLabel>
         </S.BookingCheckInput>
     </BookingBar>
-    ) : (<BookingFinish></BookingFinish>)
+    ) : (<BookingFinish setIsBookingOpen={setIsBookingOpen}></BookingFinish>)
     
   )
 }
