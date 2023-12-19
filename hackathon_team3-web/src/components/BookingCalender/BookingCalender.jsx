@@ -8,7 +8,7 @@ import moment from "moment"
 import * as S from "./BookingCalender.styles"
 
 
-const BookingCalender = () => {
+const BookingCalender = ({ setIsBookingOpen }) => {
   const numberOfMembers = 80;
   const [isSelected, setIsSelected] = useState(false);
 
@@ -33,7 +33,7 @@ const BookingCalender = () => {
   }
 
   return (
-    <BookingBar leftBtn={"취소"} rightBtn={"확인"}>
+    <BookingBar leftBtn={"취소"} rightBtn={"확인"} setIsBookingOpen={setIsBookingOpen} >
       <S.BookingCalenderHeader>
         <S.BookingCalenderToday>오늘</S.BookingCalenderToday>
       </S.BookingCalenderHeader>
@@ -53,8 +53,8 @@ const BookingCalender = () => {
       {memberComponents}
     </S.BookingMemberContainer>
     </BookingBar>
-  )
-}
+  );
+};
 
 export default BookingCalender
 
