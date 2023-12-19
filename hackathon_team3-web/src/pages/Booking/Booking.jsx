@@ -6,10 +6,10 @@ import BookingFinish from '../../components/BookingFinish/BookingFinish'
 
 const Booking = () => {
   return (
-    // <BookingCalender></BookingCalender>
+    <BookingCalender></BookingCalender>
     // <BookingCheck></BookingCheck>
     // <BookingFinalCheck></BookingFinalCheck>
-    <BookingFinish></BookingFinish>
+    // <BookingFinish></BookingFinish>
   )
 }
 

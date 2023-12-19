@@ -2,7 +2,7 @@ import styled from "styled-components"
 
 export const BookingBarContainer = styled.div`
     width: 100%;
-    position: absolute;
+    position: fixed;
     bottom: 0px;
     border-radius: 24px;
     background: #eee;
