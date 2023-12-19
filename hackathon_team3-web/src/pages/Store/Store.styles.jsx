@@ -44,6 +44,9 @@ export const StoreInfoBox = styled.div`
       color: #989898;
     }
   }
+  .price {
+    font-size: 14px;
+  }
 `;
 
 export const Location = styled.div`

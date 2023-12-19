@@ -23,17 +23,24 @@ const Tab = ({ menus, photos, reviews }) => {
   return (
     <S.TabContainer>
       <S.TabMenusContainer>
-        {["홈", "메뉴", `사진${photos.length}`, `리뷰${reviews.length}`].map(
-          (tab, index) => (
-            <S.TabMenu
-              key={index}
-              onClick={() => handleTabClick(index)}
-              className={index === activeTab ? "activeTab" : "tab"}
-            >
-              {tab}
-            </S.TabMenu>
-          )
-        )}
+        {[
+          "홈",
+          "메뉴",
+          <p>
+            사진 <span className="number">{photos.length}</span>
+          </p>,
+          <p>
+            리뷰 <span className="number">{reviews.length}</span>
+          </p>,
+        ].map((tab, index) => (
+          <S.TabMenu
+            key={index}
+            onClick={() => handleTabClick(index)}
+            className={index === activeTab ? "activeTab" : "tab"}
+          >
+            {tab}
+          </S.TabMenu>
+        ))}
       </S.TabMenusContainer>
       <div>{renderTabContent()}</div>
     </S.TabContainer>
