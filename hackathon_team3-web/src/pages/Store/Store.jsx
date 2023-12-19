@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import * as S from "./Store.styles";
 import { ArrowLeft, Home, BookMark, Share, Call } from "../../asset";
 import Tab from "../../components/Tab/Tab";
-
 import Booking from "../Booking/Booking";
 import StorePhotoSlider from "../../components/StorePhotoSlider/StorePhotoSlider";
 
@@ -11,6 +10,11 @@ const Store = () => {
   const { storeId } = useParams();
   const [store, setStore] = useState();
   const [reviews, setReviews] = useState();
+  const [menus, setMenus] = useState();
+  const [storePhotos, setStorePhotos] = useState();
+  const [photos, setPhotos] = useState();
+  const navigate = useNavigate();
+
   const fetchStore = async () => {
     try {
       const res = await fetch(
@@ -54,17 +58,24 @@ const Store = () => {
 
   useEffect(() => {
     fetchStore();
-    console.log("Store: ", store);
     fetchReviews();
-    console.log("Reviews :", reviews);
     fetchPhotos();
-    console.log("Photos :", photos);
   }, []);
-  const [menus, setMenus] = useState();
-  const [storePhotos, setStorePhotos] = useState();
-  const [photos, setPhotos] = useState();
+
+  const [isScrolled, setIsScrolled] = useState(false);
   const [isAvailable, setIsAvailable] = useState(true);
   const [isBookingOpen, setIsBookingOpen] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrolled = window.scrollY > 100;
+      setIsScrolled(scrolled);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   const handleBookingButtonClick = () => {
     if (isAvailable) {
@@ -76,10 +87,10 @@ const Store = () => {
   }
   return (
     <>
-      <S.Header>
+      <S.Header isScrolled={isScrolled}>
         <div className="svg-container">
-          <ArrowLeft />
-          <Home />
+          <ArrowLeft onClick={() => navigate(-1)} />
+          <Home onClick={() => navigate("/")} />
         </div>
         <div className="svg-container">
           <BookMark />
@@ -98,6 +109,9 @@ const Store = () => {
           <span className="rate">{store.rating.toFixed(1)}</span>
           <span className="review">({reviews.length})</span>
         </span>
+        {store.lunchPrice === store.dinnerPrice ? (
+          <p className="price">점심 저녁 동일가 {store.lunchPrice}</p>
+        ) : null}
       </S.StoreInfoBox>
       <Tab menus={menus} photos={photos} reviews={reviews} />
       <S.Location>
