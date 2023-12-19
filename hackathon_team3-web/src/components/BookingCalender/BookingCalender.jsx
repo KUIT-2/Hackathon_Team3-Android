@@ -15,6 +15,7 @@ const BookingCalender = ({ storeId, setIsBookingOpen }) => {
 
   const numberOfMembers = 20;
   const [selectedMember, setSelectedMember] = useState(0);
+  const [isSelected, setIsSelected] = useState(false)
   const [times, setTimes] = useState();
   const [lunchStart, setLunchStart] = useState();
   // const [lunchEnd, setLunchEnd] = useState();
@@ -27,12 +28,15 @@ const BookingCalender = ({ storeId, setIsBookingOpen }) => {
 
   const setMembers = (member) => {
     setSelectedMember(member);
+    setIsSelected((prev) => !prev)
+    console.log(isSelected)
   };
 
   const memberComponents = Array.from(
     { length: numberOfMembers },
     (_, index) => (
       <BookingMember
+        isSelected={isSelected}
         key={index}
         text={`${index + 1}`}
         onClick={() => setMembers(index + 1)}
@@ -54,7 +58,7 @@ const BookingCalender = ({ storeId, setIsBookingOpen }) => {
   const getTime = async (storeId) => {
     try {
       const response = await fetch(
-        `http://192.168.107.231:8080/restaurants/${storeId}/reservations?timestamp=2023-12-21`
+        `http://52.79.169.113:8080/restaurants/${storeId}/reservations?timestamp=2023-12-21`
       );
       const data = await response.json();
       // console.log(data)
@@ -77,7 +81,7 @@ const BookingCalender = ({ storeId, setIsBookingOpen }) => {
 
     try {
       const response = await fetch(
-        `http://192.168.107.231:8080/restaurants/${storeId}/reservations`,
+        `http://52.79.169.113:8080/restaurants/${storeId}/reservations`,
         {
           method: "POST",
           headers: {
@@ -155,7 +159,8 @@ const BookingCalender = ({ storeId, setIsBookingOpen }) => {
   
   return (
     !isNext ? 
-      (<BookingBar leftBtn={"취소"} rightBtn={"확인"} setIsBookingOpen={setIsBookingOpen} rightBtnOnClick={() => handleRightBtnClick()}>
+      (<BookingBar leftBtn={"취소"} rightBtn={"확인"} setIsBookingOpen={setIsBookingOpen} rightBtnOnClick={() => handleRightBtnClick()}
+        leftBtnOnClick={() => setIsBookingOpen(false)}>
         <S.BookingCalenderHeader>
           <S.BookingCalenderToday onClick={() => setToday()}>오늘</S.BookingCalenderToday>
         </S.BookingCalenderHeader>

@@ -1,17 +1,12 @@
-import React from "react";
-import BookingBar from "../BookingBar/BookingBar";
+import React from 'react'
+import BookingBar from '../BookingBar/BookingBar'
 
-import * as O from "../BookingCheck/BookingCheck.styles";
-import * as S from "./BookingFinalCheck.styles";
+import * as O from "../BookingCheck/BookingCheck.styles"
+import * as S from "./BookingFinalCheck.styles"
 
-import {
-  IconCalender,
-  IconClock,
-  IconUsers,
-  IconUncheck,
-} from "../../assets/index";
+import { IconCalender, IconClock, IconUsers, IconUncheck } from "../../assets/index"
 import { useState } from 'react';
-import BookingFinish from '../BookingFinish/BookingFinish'
+import BookingFinish from './../BookingFinish/BookingFinish';
 
 const BookingFinalCheck = ({ setIsBookingOpen }) => {
 
@@ -24,13 +19,7 @@ const BookingFinalCheck = ({ setIsBookingOpen }) => {
 
   return (
     !isNext ? (
-      <BookingBar
-      leftBtn={"취소"}
-      rightBtn={"예약 확정"}
-      setIsBookingOpen={setIsBookingOpen}
-      rightBtnOnClick={() => handleRightBtnClick()}
-      leftBtnOnClick={() => setIsBookingOpen(false)}
-    >
+        <BookingBar leftBtn={"취소"} rightBtn={"예약 확정"} setIsBookingOpen={setIsBookingOpen} rightBtnOnClick={() => handleRightBtnClick()}>
         <O.BookingCheckHeading>예약을 최종 확정하시겠어요?</O.BookingCheckHeading>
         <div style={{background: '#D9D9D9', height: '3px',}}></div>
         <O.BookingCheckName>센시티브서울</O.BookingCheckName>
@@ -59,9 +48,9 @@ const BookingFinalCheck = ({ setIsBookingOpen }) => {
             <S.BookingCheckInputLabel>다시 보지 않기</S.BookingCheckInputLabel>
         </S.BookingCheckInput>
     </BookingBar>
-    ) : (<BookingFinish setIsBookingOpen={setIsBookingOpen}></BookingFinish>)
+    ) : (<BookingFinish></BookingFinish>)
     
   )
 }
 
-export default BookingFinalCheck;
+export default BookingFinalCheck
