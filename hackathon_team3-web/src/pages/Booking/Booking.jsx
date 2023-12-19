@@ -4,10 +4,10 @@ import BookingCheck from "../../components/BookingCheck/BookingCheck";
 import BookingFinalCheck from "../../components/BookingFinalCheck/BookingFinalCheck";
 import BookingFinish from "../../components/BookingFinish/BookingFinish";
 
-const Booking = () => {
+const Booking = ({ setIsBookingOpen }) => {
   return (
-    //<BookingCalender></BookingCalender>
-    <BookingCheck></BookingCheck>
+    <BookingCalender setIsBookingOpen={setIsBookingOpen}></BookingCalender>
+    //<BookingCheck></BookingCheck>
     //<BookingFinalCheck></BookingFinalCheck>
     //<BookingFinish></BookingFinish>
   );

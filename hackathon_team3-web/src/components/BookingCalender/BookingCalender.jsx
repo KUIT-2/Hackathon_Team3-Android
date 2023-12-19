@@ -1,12 +1,12 @@
-import React from 'react'
-import BookingBar from '../BookingBar/BookingBar'
+import React from "react";
+import BookingBar from "../BookingBar/BookingBar";
 
-const BookingCalender = () => {
+const BookingCalender = ({ setIsBookingOpen }) => {
   return (
-    <BookingBar>
-        <span>달력</span>
+    <BookingBar setIsBookingOpen={setIsBookingOpen}>
+      <span>달력</span>
     </BookingBar>
-  )
-}
+  );
+};
 
-export default BookingCalender
+export default BookingCalender;
