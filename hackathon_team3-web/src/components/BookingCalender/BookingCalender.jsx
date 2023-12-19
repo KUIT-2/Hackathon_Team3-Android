@@ -133,8 +133,16 @@ const BookingCalender = ({ storeId, setIsBookingOpen }) => {
       return { startTime, endTime };
     });
 
+    const setTime = (startTime) => {
+      setTimes(prevTimes => [...prevTimes, startTime]);
+    };
+
     const components = timeIntervals.map((timeInterval, index) => (
-      <BookingTime key={index} startTime={timeInterval.startTime} />
+      <BookingTime
+        key={index}
+        startTime={timeInterval.startTime}
+        onClick={() => setTime(timeInterval.startTime)}
+      />
     ));
 
     setTimeComponents(components);
@@ -142,50 +150,44 @@ const BookingCalender = ({ storeId, setIsBookingOpen }) => {
 
   const handleRightBtnClick = () => {
     setIsNext(true);
-    console.log(isNext);
-  };
-
-  return !isNext ? (
-    <BookingBar
-      leftBtn={"취소"}
-      rightBtn={"확인"}
-      setIsBookingOpen={setIsBookingOpen}
-      rightBtnOnClick={() => handleRightBtnClick()}
-      leftBtnOnClick={() => setIsBookingOpen(false)}
-    >
-      <S.BookingCalenderHeader>
-        <S.BookingCalenderToday onClick={() => setToday()}>
-          오늘
-        </S.BookingCalenderToday>
-      </S.BookingCalenderHeader>
-      <S.CalendarContainer>
-        <Calendar
-          className={"calendar"}
-          onChange={handlerDateChange}
-          value={value}
-          formatDay={(locale, date) => date.getDate()}
-          next2Label={null}
-          prev2Label={null}
-        >
-          /
-        </Calendar>
-      </S.CalendarContainer>
-      <div
-        style={{
-          display: "flex",
-          background: "#D9D9D9",
-          height: "2px",
-          width: "90%",
-          marginTop: "20px",
-          marginLeft: "20px",
-        }}
-      ></div>
-      <S.BookingMemberContainer>{memberComponents}</S.BookingMemberContainer>
-      <S.BookingTimeContainer>{timeComponents}</S.BookingTimeContainer>
-    </BookingBar>
-  ) : (
-    <BookingCheck setIsBookingOpen={setIsBookingOpen}></BookingCheck>
+    console.log(isNext)
+  }
+  
+  return (
+    !isNext ? 
+      (<BookingBar leftBtn={"취소"} rightBtn={"확인"} setIsBookingOpen={setIsBookingOpen} rightBtnOnClick={() => handleRightBtnClick()}>
+        <S.BookingCalenderHeader>
+          <S.BookingCalenderToday onClick={() => setToday()}>오늘</S.BookingCalenderToday>
+        </S.BookingCalenderHeader>
+        <S.CalendarContainer>
+          <Calendar
+            className={"calendar"}
+            onChange={handlerDateChange}
+            value={value}
+            formatDay={(locale, date) => date.getDate()}
+            next2Label={null}
+            prev2Label={null}
+          >
+          /</Calendar>
+        </S.CalendarContainer>
+        <div style={{
+          display: 'flex',
+          background: '#D9D9D9',
+          height: '2px',
+          width: '90%',
+          marginTop: '20px',
+          marginLeft: '20px'
+        }}></div>
+      <S.BookingMemberContainer>
+        {memberComponents}
+      </S.BookingMemberContainer>
+      <S.BookingTimeContainer>
+        {timeComponents}
+      </S.BookingTimeContainer>
+    </BookingBar>)
+    : (<BookingCheck nowDate={nowDate} setIsBookingOpen={setIsBookingOpen} selectedMember={selectedMember} time={times}></BookingCheck>)
   );
+   
 };
 
 export default BookingCalender;
