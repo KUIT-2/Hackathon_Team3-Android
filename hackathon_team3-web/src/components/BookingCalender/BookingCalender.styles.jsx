@@ -45,6 +45,7 @@ export const CalendarContainer = styled.div`
             background: #ff3d00;
             border-radius: 100%;
         }
+    }
 `
 export const BookingMemberContainer = styled.div`
     display: flex;
