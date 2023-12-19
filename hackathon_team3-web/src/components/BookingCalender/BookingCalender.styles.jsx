@@ -85,6 +85,27 @@ export const BookingTimeContainer = styled.div`
   gap: 12px;
 `;
 
+export const ReservationTime = styled.div`
+  display: flex;
+  margin-left: 15px;
+`
+
+export const TimeButton = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  padding: 10px;
+  width: 160px;
+  height: 39px;
+  border: 1px solid #d9d9d9;
+  cursor: pointer;
+  background-color: ${(props) => (props.isActive ? '#eb4f27' : "#FFF")};
+  color: ${(props) => (props.isActive ? '#FFF' : "#000")};
+  margin: 10px;
+  flex-shrink: 0;
+`;
+
 export const BookingMember = styled.div`
     display: flex;
     padding: 20px;
@@ -118,5 +139,4 @@ export const BookingTime = styled.div`
     font-size: 14px;
     color: #fff;
     background: #ff3d00;
-
 `

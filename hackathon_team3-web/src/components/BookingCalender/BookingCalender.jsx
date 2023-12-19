@@ -15,8 +15,10 @@ const BookingCalender = ({ store, storeId, setIsBookingOpen }) => {
 
   const numberOfMembers = 20;
   const [selectedMember, setSelectedMember] = useState(0);
+
   const [isSelected, setIsSelected] = useState(false)
   const [times, setTimes] = useState();
+
   const [lunchStart, setLunchStart] = useState();
   // const [lunchEnd, setLunchEnd] = useState();
   // const [dinnerStart, setDinnerStart] = useState();
@@ -26,6 +28,9 @@ const BookingCalender = ({ store, storeId, setIsBookingOpen }) => {
 
   const [term, setTerm] = useState();
   const [peopleNum, setPeopleNum] = useState(1);
+
+  const [selectedTime, setselectedTime] = useState(); 
+  const [timesArray, setTimesArray] = useState([]); 
 
   // const setReservationPeopleNum = useState(
   //   (state) => state.setReservationPeopleNum
@@ -69,7 +74,7 @@ const BookingCalender = ({ store, storeId, setIsBookingOpen }) => {
       const data = await response.json();
       // console.log(data)
 
-      setTimes(data.result);
+      setselectedTime(data.result);
 
       setLunchStart(new Date(new Date(data.result.lunchStart) - 32400000));
       // setLunchEnd(new Date(data.result.lunchEnd))
@@ -128,12 +133,13 @@ const BookingCalender = ({ store, storeId, setIsBookingOpen }) => {
     onChange(today);
   };
 
-  const setTime = (startTime) => {
-    setTimes(prevTimes => [...prevTimes, startTime]);
-  };
+  // const setTime = (startTime) => {
+  //   setTimes(startTime);
+  // };
 
   useEffect(() => {
     getTime(storeId);
+    getTimeGap();
 
     const interval = 30;
     setNum(term / interval);
@@ -153,7 +159,7 @@ const BookingCalender = ({ store, storeId, setIsBookingOpen }) => {
       <BookingTime
         key={index}
         startTime={timeInterval.startTime}
-        onClick={() => setTime(timeInterval.startTime)}
+        onClick={() => setselectedTime(timeInterval.startTime)}
       />
     ));
 
@@ -168,6 +174,24 @@ const BookingCalender = ({ store, storeId, setIsBookingOpen }) => {
   const handlePeopleButton = (index) => {
     const peopleCount = index + 1;
     setPeopleNum(peopleCount);
+  }
+
+  const getTimeGap = async () => {
+    try {
+      const response = await fetch(
+        `http://52.79.169.113:8080/restaurants/${storeId}/reservations?timestamp=2023-12-19`
+      );
+      const data = await response.json();
+
+      setTimesArray(data.result.availableTime);
+      
+    } catch (err) {
+      console.error("Error fetching data: ", err);
+    }
+  }
+
+  const handleTimeButton = (index) => {
+    setselectedTime(timesArray[index]);
   }
   
   return (
@@ -197,7 +221,6 @@ const BookingCalender = ({ store, storeId, setIsBookingOpen }) => {
           marginLeft: '20px'
         }}></div>
       <S.BookingMemberContainer>
-        {/* {memberComponents} */}
         <S.ReservationPeople>
           {[...Array(20)].map((_, index) => (
             <S.PeopleButton
@@ -215,10 +238,24 @@ const BookingCalender = ({ store, storeId, setIsBookingOpen }) => {
         </S.ReservationPeople>
       </S.BookingMemberContainer>
       <S.BookingTimeContainer>
-        {timeComponents}
+        {/* {timeComponents} */}
+        <S.ReservationTime>
+          {timesArray.map((_, index) => (
+            <S.TimeButton
+            key={index}
+            onClick={
+              () => {
+                handleTimeButton(index);
+              }
+            }
+            isActive={selectedTime === timesArray[index]}>
+              {timesArray[index]}
+            </S.TimeButton>
+          ))}
+        </S.ReservationTime>
       </S.BookingTimeContainer>
     </BookingBar>)
-    : (<BookingCheck store={store} nowDate={nowDate} nowDay={nowDay} setIsBookingOpen={setIsBookingOpen} selectedMember={peopleNum} time={times}></BookingCheck>)
+    : (<BookingCheck store={store} nowDate={nowDate} nowDay={nowDay} setIsBookingOpen={setIsBookingOpen} selectedMember={peopleNum} time={selectedTime}></BookingCheck>)
   );
    
 };
