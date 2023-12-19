@@ -20,6 +20,8 @@ export const CalendarContainer = styled.div`
     .calendar {
         margin-top: 16px;
         line-height: 2rem;
+        font-size: 16px;
+
         .react-calendar__navigation {
             display: flex;
             margin-left: 65px;
@@ -37,7 +39,7 @@ export const CalendarContainer = styled.div`
             text-decoration: none;
         }
         .react-calendar__tile--active {
-            width: 30px;
+            width: 15px;
             height: 50px;
             color: #fff;
             background: #ff3d00;
