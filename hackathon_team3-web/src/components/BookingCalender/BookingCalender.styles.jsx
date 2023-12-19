@@ -20,8 +20,6 @@ export const CalendarContainer = styled.div`
   .calendar {
     margin-top: 16px;
     line-height: 2rem;
-    font-size: 16px;
-
 
         .react-calendar__navigation {
             display: flex;
@@ -32,7 +30,7 @@ export const CalendarContainer = styled.div`
             justify-content: center;
           }
         .react-calendar__navigation__label > span {
-            font-size: 14px;
+            font-size: 16px;
             font-weight: 500;
             color: #000;
         }

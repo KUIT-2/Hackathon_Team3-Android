@@ -1,12 +1,23 @@
 import React from 'react'
 import BookingBar from '../BookingBar/BookingBar'
+import BookingFinalCheck from '../BookingFinalCheck/BookingFinalCheck'
 
 import * as S from './BookingCheck.styles'
 import { IconCalender, IconClock, IconUsers } from '../../assets/index'
+import { useState } from 'react';
 
-const BookingCheck = () => {
+const BookingCheck = ({ setIsBookingOpen }) => {
+
+  const [isNext, setIsNext] = useState(false);
+
+  const handleRightBtnClick = () => {
+    setIsNext(true);
+    console.log(isNext)
+  }
+  
   return (
-    <BookingBar leftBtn={"취소"} rightBtn={"확인"}>
+    !isNext ? (
+        <BookingBar leftBtn={"취소"} rightBtn={"확인"} setIsBookingOpen={setIsBookingOpen} rightBtnOnClick={() => handleRightBtnClick()}>
         <S.BookingCheckHeading>내일 방문이 맞으신가요?</S.BookingCheckHeading>
         <div style={{background: '#D9D9D9', height: '3px',}}></div>
         <S.BookingCheckSubheading>방문 일정을 다시 한 번 확인해 주세요.</S.BookingCheckSubheading>
@@ -30,6 +41,7 @@ const BookingCheck = () => {
             다른 고객님께도 피해가 될 수 있으므로 신중히 예약 부탁드립니다 :)
         </S.BookingCheckWarning>
     </BookingBar>
+    ): (<BookingFinalCheck></BookingFinalCheck>)
   )
 }
 
