@@ -29,7 +29,7 @@ const BookingCheck = ({ store, nowDate, setIsBookingOpen, selectedMember, times 
             </S.Icon>
             <S.Icon>
                 <IconClock></IconClock>
-                <S.IconLabel>오후 {times}</S.IconLabel>
+                <S.IconLabel>{times}</S.IconLabel>
             </S.Icon>
             <S.Icon style={{'marginRight': '0px'}}>
                 <IconUsers></IconUsers>
@@ -40,7 +40,7 @@ const BookingCheck = ({ store, nowDate, setIsBookingOpen, selectedMember, times 
             다른 고객님께도 피해가 될 수 있으므로 신중히 예약 부탁드립니다 :)
         </S.BookingCheckWarning>
     </BookingBar>
-    ): (<BookingFinalCheck></BookingFinalCheck>)
+    ): (<BookingFinalCheck store={store} nowDate={nowDate} selectedMember={selectedMember} time={times} setIsBookingOpen={setIsBookingOpen}></BookingFinalCheck>)
   )
 };
 

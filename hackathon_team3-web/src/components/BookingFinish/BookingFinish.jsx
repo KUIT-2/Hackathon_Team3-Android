@@ -5,7 +5,7 @@ import * as O from "../BookingCheck/BookingCheck.styles"
 import * as S from "./BookingFinish.styles"
 import { useNavigate } from 'react-router-dom'
 
-const BookingFinish = ({ setIsBookingOpen }) => {
+const BookingFinish = ({ store, nowDate, selectedMember, time, setIsBookingOpen }) => {
   const navigate = useNavigate();
 
   return (
@@ -16,11 +16,11 @@ const BookingFinish = ({ setIsBookingOpen }) => {
         <O.BookingCheckHeading>예약이 완료되었습니다.</O.BookingCheckHeading>
         <S.BookingStoreContainer>
             <S.BookingStoreLabel>레스토랑 이름</S.BookingStoreLabel>
-            <S.BookingStoreName>센시티브서울</S.BookingStoreName>
+            <S.BookingStoreName>{store.name}</S.BookingStoreName>
         </S.BookingStoreContainer>
         <S.BookingDateContainer>
             <S.BookingDateLabel>예약일시</S.BookingDateLabel>
-            <S.BookingDate>11.11 (목) 오후 6:30 2명</S.BookingDate>
+            <S.BookingDate>{nowDate} {time} {selectedMember}명</S.BookingDate>
         </S.BookingDateContainer>
     </BookingBar>
   )
