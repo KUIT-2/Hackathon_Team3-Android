@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import BookingBar from '../BookingBar/BookingBar'
 import BookingMember from './BookingMember'
 import Calendar from 'react-calendar'
@@ -7,6 +7,7 @@ import moment from "moment"
 
 import * as S from "./BookingCalender.styles"
 import BookingTime from './BookingTime';
+import { getTime } from '../../apis/bookingApi'
 
 const BookingCalender = ({ setIsBookingOpen }) => {
 
@@ -45,6 +46,10 @@ const BookingCalender = ({ setIsBookingOpen }) => {
     const today = new Date();
     onChange(today)
   };
+
+  useEffect(() => {
+    getTime()
+  })
 
   return (
     <BookingBar leftBtn={"취소"} rightBtn={"확인"} setIsBookingOpen={setIsBookingOpen} >
