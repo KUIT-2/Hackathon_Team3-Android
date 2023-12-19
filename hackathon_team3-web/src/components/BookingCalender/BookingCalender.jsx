@@ -10,12 +10,12 @@ import BookingTime from "./BookingTime";
 import { getTime } from "../../apis/bookingApi";
 import BookingCheck from "../BookingCheck/BookingCheck";
 
-const BookingCalender = ({ storeId, setIsBookingOpen }) => {
+const BookingCalender = ({ store, storeId, setIsBookingOpen }) => {
   const [isNext, setIsNext] = useState(false);
 
   const numberOfMembers = 20;
   const [selectedMember, setSelectedMember] = useState(0);
-  const [times, setTimes] = useState();
+  const [times, setTimes] = useState([]);
   const [lunchStart, setLunchStart] = useState();
   // const [lunchEnd, setLunchEnd] = useState();
   // const [dinnerStart, setDinnerStart] = useState();
@@ -54,7 +54,7 @@ const BookingCalender = ({ storeId, setIsBookingOpen }) => {
   const getTime = async (storeId) => {
     try {
       const response = await fetch(
-        `http://192.168.107.231:8080/restaurants/${storeId}/reservations?timestamp=2023-12-21`
+        `http://52.79.169.113:8080/restaurants/${storeId}/reservations?timestamp=2023-12-21`
       );
       const data = await response.json();
       // console.log(data)
@@ -77,7 +77,7 @@ const BookingCalender = ({ storeId, setIsBookingOpen }) => {
 
     try {
       const response = await fetch(
-        `http://192.168.107.231:8080/restaurants/${storeId}/reservations`,
+        `http://52.79.169.113:8080/restaurants/${storeId}/reservations`,
         {
           method: "POST",
           headers: {
@@ -116,6 +116,10 @@ const BookingCalender = ({ storeId, setIsBookingOpen }) => {
     onChange(today);
   };
 
+  const setTime = (startTime) => {
+    setTimes(prevTimes => [...prevTimes, startTime]);
+  };
+
   useEffect(() => {
     getTime(storeId);
 
@@ -134,7 +138,11 @@ const BookingCalender = ({ storeId, setIsBookingOpen }) => {
     });
 
     const components = timeIntervals.map((timeInterval, index) => (
-      <BookingTime key={index} startTime={timeInterval.startTime} />
+      <BookingTime
+        key={index}
+        startTime={timeInterval.startTime}
+        onClick={() => setTime(timeInterval.startTime)}
+      />
     ));
 
     setTimeComponents(components);
@@ -142,50 +150,44 @@ const BookingCalender = ({ storeId, setIsBookingOpen }) => {
 
   const handleRightBtnClick = () => {
     setIsNext(true);
-    console.log(isNext);
-  };
-
-  return !isNext ? (
-    <BookingBar
-      leftBtn={"취소"}
-      rightBtn={"확인"}
-      setIsBookingOpen={setIsBookingOpen}
-      rightBtnOnClick={() => handleRightBtnClick()}
-      leftBtnOnClick={() => setIsBookingOpen(false)}
-    >
-      <S.BookingCalenderHeader>
-        <S.BookingCalenderToday onClick={() => setToday()}>
-          오늘
-        </S.BookingCalenderToday>
-      </S.BookingCalenderHeader>
-      <S.CalendarContainer>
-        <Calendar
-          className={"calendar"}
-          onChange={handlerDateChange}
-          value={value}
-          formatDay={(locale, date) => date.getDate()}
-          next2Label={null}
-          prev2Label={null}
-        >
-          /
-        </Calendar>
-      </S.CalendarContainer>
-      <div
-        style={{
-          display: "flex",
-          background: "#D9D9D9",
-          height: "2px",
-          width: "90%",
-          marginTop: "20px",
-          marginLeft: "20px",
-        }}
-      ></div>
-      <S.BookingMemberContainer>{memberComponents}</S.BookingMemberContainer>
-      <S.BookingTimeContainer>{timeComponents}</S.BookingTimeContainer>
-    </BookingBar>
-  ) : (
-    <BookingCheck setIsBookingOpen={setIsBookingOpen}></BookingCheck>
+    console.log(isNext)
+  }
+  
+  return (
+    !isNext ? 
+      (<BookingBar leftBtn={"취소"} rightBtn={"확인"} setIsBookingOpen={setIsBookingOpen} rightBtnOnClick={() => handleRightBtnClick()}>
+        <S.BookingCalenderHeader>
+          <S.BookingCalenderToday onClick={() => setToday()}>오늘</S.BookingCalenderToday>
+        </S.BookingCalenderHeader>
+        <S.CalendarContainer>
+          <Calendar
+            className={"calendar"}
+            onChange={handlerDateChange}
+            value={value}
+            formatDay={(locale, date) => date.getDate()}
+            next2Label={null}
+            prev2Label={null}
+          >
+          /</Calendar>
+        </S.CalendarContainer>
+        <div style={{
+          display: 'flex',
+          background: '#D9D9D9',
+          height: '2px',
+          width: '90%',
+          marginTop: '20px',
+          marginLeft: '20px'
+        }}></div>
+      <S.BookingMemberContainer>
+        {memberComponents}
+      </S.BookingMemberContainer>
+      <S.BookingTimeContainer>
+        {timeComponents}
+      </S.BookingTimeContainer>
+    </BookingBar>)
+    : (<BookingCheck store={store} nowDate={nowDate} setIsBookingOpen={setIsBookingOpen} selectedMember={selectedMember} time={times}></BookingCheck>)
   );
+   
 };
 
 export default BookingCalender;

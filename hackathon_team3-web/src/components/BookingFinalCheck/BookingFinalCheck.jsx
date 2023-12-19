@@ -13,7 +13,7 @@ import {
 import { useState } from 'react';
 import BookingFinish from '../BookingFinish/BookingFinish'
 
-const BookingFinalCheck = ({ setIsBookingOpen }) => {
+const BookingFinalCheck = ({ store, nowDate, selectedMember, time, setIsBookingOpen }) => {
 
   const [isNext, setIsNext] = useState(false);
 
@@ -33,20 +33,20 @@ const BookingFinalCheck = ({ setIsBookingOpen }) => {
     >
         <O.BookingCheckHeading>예약을 최종 확정하시겠어요?</O.BookingCheckHeading>
         <div style={{background: '#D9D9D9', height: '3px',}}></div>
-        <O.BookingCheckName>센시티브서울</O.BookingCheckName>
-        <O.BookingCheckLabel>한남동 · 이탈리아 음식</O.BookingCheckLabel>
+        <O.BookingCheckName>{store.name}</O.BookingCheckName>
+        <O.BookingCheckLabel>{store.region} · {store.category}</O.BookingCheckLabel>
         <O.BookingCheckContainer>
             <O.Icon>
                 <IconCalender></IconCalender>
-                <O.IconLabel>1.06(금)</O.IconLabel>
+                <O.IconLabel>{nowDate}</O.IconLabel>
             </O.Icon>
             <O.Icon>
                 <IconClock></IconClock>
-                <O.IconLabel>오후 6:30</O.IconLabel>
+                <O.IconLabel>{time}</O.IconLabel>
             </O.Icon>
             <O.Icon style={{'marginRight': '0px'}}>
                 <IconUsers></IconUsers>
-                <O.IconLabel>2명</O.IconLabel>
+                <O.IconLabel>{selectedMember}명</O.IconLabel>
             </O.Icon>
         </O.BookingCheckContainer>
         <O.BookingCheckWarning>
@@ -59,7 +59,7 @@ const BookingFinalCheck = ({ setIsBookingOpen }) => {
             <S.BookingCheckInputLabel>다시 보지 않기</S.BookingCheckInputLabel>
         </S.BookingCheckInput>
     </BookingBar>
-    ) : (<BookingFinish setIsBookingOpen={setIsBookingOpen}></BookingFinish>)
+    ) : (<BookingFinish store={store} nowDate={nowDate} selectedMember={selectedMember} time={time} setIsBookingOpen={setIsBookingOpen}></BookingFinish>)
     
   )
 }
