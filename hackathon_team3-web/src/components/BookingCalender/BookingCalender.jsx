@@ -32,10 +32,15 @@ const BookingCalender = ({ setIsBookingOpen }) => {
     setNowDate(moment(selectedDate).format("MM월 DD일"))
   }
 
+  const setToday = () => {
+    const today = new Date();
+    onChange(today)
+  };
+
   return (
     <BookingBar leftBtn={"취소"} rightBtn={"확인"} setIsBookingOpen={setIsBookingOpen} >
       <S.BookingCalenderHeader>
-        <S.BookingCalenderToday>오늘</S.BookingCalenderToday>
+        <S.BookingCalenderToday onClick={() => setToday()}>오늘</S.BookingCalenderToday>
       </S.BookingCalenderHeader>
       <S.CalendarContainer>
         <Calendar
@@ -49,10 +54,12 @@ const BookingCalender = ({ setIsBookingOpen }) => {
         /</Calendar>
       </S.CalendarContainer>
       <div style={{
+        display: 'flex',
         background: '#D9D9D9',
-        height: '1px',
-        width: '80%',
+        height: '2px',
+        width: '90%',
         marginTop: '20px',
+        marginLeft: '20px'
       }}></div>
     <S.BookingMemberContainer>
       {memberComponents}
