@@ -1,5 +1,13 @@
+import { Normalize } from "styled-normalize";
+import Router from "./pages";
+
 function App() {
-  return <div></div>;
+  return (
+    <>
+      <Normalize />
+      <Router />
+    </>
+  );
 }
 
 export default App;
