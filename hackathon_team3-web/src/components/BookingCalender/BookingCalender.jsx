@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import BookingBar from '../BookingBar/BookingBar'
 import BookingMember from './BookingMember'
 import Calendar from 'react-calendar'
+import './Calendar.css'
 import moment from "moment"
 import 'react-calendar/dist/Calendar.css'
 
@@ -13,7 +14,6 @@ const BookingCalender = ({ setIsBookingOpen }) => {
 
   const setMembers = ( member ) => {
     setSelectedMember(member)
-    console.log(selectedMember)
   }
 
   const memberComponents = Array.from({ length: numberOfMembers }, (_, index) => (

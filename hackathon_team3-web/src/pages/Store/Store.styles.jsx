@@ -44,25 +44,6 @@ export const StoreInfoBox = styled.div`
   }
 `;
 
-export const AddBar = styled.div`
-  display: flex;
-  justify-content: space-between;
-  padding: 10px 20px;
-  border-bottom: 9px solid #d9d9d9;
-  p {
-    font-weight: bold;
-    display: flex;
-    align-items: center;
-  }
-  .add-btn {
-    border-radius: 20px;
-    border: 2px solid #d9d9d9;
-    background-color: white;
-    font-size: 14px;
-    padding: 7px 10px;
-  }
-`;
-
 export const Location = styled.div`
   display: flex;
   flex-direction: column;
