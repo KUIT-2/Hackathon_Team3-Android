@@ -1,13 +1,12 @@
-import React from 'react'
-import BookingBar from '../BookingBar/BookingBar'
-import BookingFinalCheck from '../BookingFinalCheck/BookingFinalCheck'
+import React from "react";
+import BookingBar from "../BookingBar/BookingBar";
+import BookingFinalCheck from "../BookingFinalCheck/BookingFinalCheck";
 
-import * as S from './BookingCheck.styles'
-import { IconCalender, IconClock, IconUsers } from '../../assets/index'
-import { useState } from 'react';
+import * as S from "./BookingCheck.styles";
+import { IconCalender, IconClock, IconUsers } from "../../assets/index";
+import { useState } from "react";
 
 const BookingCheck = ({ nowDate, setIsBookingOpen, selectedMember, times }) => {
-
   const [isNext, setIsNext] = useState(false);
 
   const handleRightBtnClick = () => {
@@ -43,6 +42,6 @@ const BookingCheck = ({ nowDate, setIsBookingOpen, selectedMember, times }) => {
     </BookingBar>
     ): (<BookingFinalCheck></BookingFinalCheck>)
   )
-}
+};
 
-export default BookingCheck
+export default BookingCheck;

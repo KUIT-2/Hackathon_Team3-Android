@@ -1,17 +1,16 @@
-import React, { useEffect, useState } from 'react'
-import BookingBar from '../BookingBar/BookingBar'
-import BookingMember from './BookingMember'
-import Calendar from 'react-calendar'
-import './Calendar.css'
-import moment from "moment"
+import React, { useEffect, useState } from "react";
+import BookingBar from "../BookingBar/BookingBar";
+import BookingMember from "./BookingMember";
+import Calendar from "react-calendar";
+import "./Calendar.css";
+import moment from "moment";
 
-import * as S from "./BookingCalender.styles"
-import BookingTime from './BookingTime';
-import { getTime } from '../../apis/bookingApi'
-import BookingCheck from '../BookingCheck/BookingCheck'
+import * as S from "./BookingCalender.styles";
+import BookingTime from "./BookingTime";
+import { getTime } from "../../apis/bookingApi";
+import BookingCheck from "../BookingCheck/BookingCheck";
 
 const BookingCalender = ({ storeId, setIsBookingOpen }) => {
-
   const [isNext, setIsNext] = useState(false);
 
   const numberOfMembers = 20;
@@ -21,22 +20,25 @@ const BookingCalender = ({ storeId, setIsBookingOpen }) => {
   // const [lunchEnd, setLunchEnd] = useState();
   // const [dinnerStart, setDinnerStart] = useState();
   const [dinnerEnd, setDinnerEnd] = useState();
-  const [num, setNum] = useState()
-  const [timeComponents, setTimeComponents] = useState()
+  const [num, setNum] = useState();
+  const [timeComponents, setTimeComponents] = useState();
 
-  const [term,setTerm] = useState();
+  const [term, setTerm] = useState();
 
-  const setMembers = ( member ) => {
-    setSelectedMember(member)
-  }
+  const setMembers = (member) => {
+    setSelectedMember(member);
+  };
 
-  const memberComponents = Array.from({ length: numberOfMembers }, (_, index) => (
-    <BookingMember
-      key={index}
-      text={`${index + 1}`}
-      onClick={() => setMembers(index + 1)}
-    />
-  ));
+  const memberComponents = Array.from(
+    { length: numberOfMembers },
+    (_, index) => (
+      <BookingMember
+        key={index}
+        text={`${index + 1}`}
+        onClick={() => setMembers(index + 1)}
+      />
+    )
+  );
 
   // const timeComponents = Array.from({ length: 10 }, (_, index) => (
   //   <BookingTime
@@ -46,10 +48,10 @@ const BookingCalender = ({ storeId, setIsBookingOpen }) => {
   //   />
   // ));
 
-  const [value, onChange] = useState(new Date())
+  const [value, onChange] = useState(new Date());
   const [nowDate, setNowDate] = useState("날짜");
 
-  const getTime = async( storeId ) => {
+  const getTime = async (storeId) => {
     try {
       const response = await fetch(
         `http://192.168.107.231:8080/restaurants/${storeId}/reservations?timestamp=2023-12-21`
@@ -57,71 +59,77 @@ const BookingCalender = ({ storeId, setIsBookingOpen }) => {
       const data = await response.json();
       // console.log(data)
 
-      //setTimes(data.result)
+      setTimes(data.result);
 
       setLunchStart(new Date(new Date(data.result.lunchStart) - 32400000));
       // setLunchEnd(new Date(data.result.lunchEnd))
       // setDinnerStart(new Date(data.result.dinnerStart))
-      setDinnerEnd(new Date(new Date(data.result.dinnerEnd)- 32400000))
-      setTerm((dinnerEnd - lunchStart)/(1000*60))
+      setDinnerEnd(new Date(new Date(data.result.dinnerEnd) - 32400000));
+      setTerm((dinnerEnd - lunchStart) / (1000 * 60));
       // console.log(lunchStart)
     } catch (err) {
       console.error("Error fetching data: ", err);
     }
-  }
+  };
 
   const updateBooking = async (storeId, date, countPeople) => {
+    // const totalPrice = menus.reduce((acc, menu) => acc + menu.price * menu.cnt, 0);
 
-      // const totalPrice = menus.reduce((acc, menu) => acc + menu.price * menu.cnt, 0);
-  
-      try {
-          const response = await fetch(`http://192.168.107.231:8080/restaurants/${storeId}/reservations`, {
-              method: "POST",
-              headers: {
-                  "Content-Type": "application/json"
-              },
-              body: JSON.stringify({
-                  date,
-                  time: date,
-                  countPeople,
-              }),
-          });
-  
-      if (!response.ok) {
-          // Handle error if the response status is not OK (e.g., 4xx or 5xx)
-          throw new Error(`HTTP error! Status: ${response.status}`);
+    try {
+      const response = await fetch(
+        `http://192.168.107.231:8080/restaurants/${storeId}/reservations`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            date,
+            time: date,
+            countPeople,
+          }),
         }
-    
-        const data = await response.json();
-        // Handle the data as needed
-    
-        return data;
-      } catch (error) {
-        console.error("Error during updateBooking:", error);
-        // Handle errors here, e.g., show an error message to the user
+      );
+
+      if (!response.ok) {
+        // Handle error if the response status is not OK (e.g., 4xx or 5xx)
+        throw new Error(`HTTP error! Status: ${response.status}`);
       }
-  }
+
+      const data = await response.json();
+      // Handle the data as needed
+
+      return data;
+    } catch (error) {
+      console.error("Error during updateBooking:", error);
+      // Handle errors here, e.g., show an error message to the user
+    }
+  };
 
   const handlerDateChange = (selectedDate) => {
     onChange(selectedDate);
-    setNowDate(moment(selectedDate).format("MM월 DD일"))
-  }
+    setNowDate(moment(selectedDate).format("MM월 DD일"));
+  };
 
   const setToday = () => {
     const today = new Date();
-    onChange(today)
+    onChange(today);
   };
 
   useEffect(() => {
     getTime(storeId);
 
     const interval = 30;
-    setNum(term/interval);
+    setNum(term / interval);
 
     const timeIntervals = Array.from({ length: num }, (_, index) => {
-      const startTime = moment(lunchStart).add(index * interval, 'minutes').format('HH:mm');
+      const startTime = moment(lunchStart)
+        .add(index * interval, "minutes")
+        .format("HH:mm");
       // console.log(lunchStart)
-      const endTime = moment(lunchStart).add((index + 1) * interval, 'minutes').format('HH:mm');
+      const endTime = moment(lunchStart)
+        .add((index + 1) * interval, "minutes")
+        .format("HH:mm");
       return { startTime, endTime };
     });
 
@@ -144,7 +152,7 @@ const BookingCalender = ({ storeId, setIsBookingOpen }) => {
     setIsNext(true);
     console.log(isNext)
   }
-
+  
   return (
     !isNext ? 
       (<BookingBar leftBtn={"취소"} rightBtn={"확인"} setIsBookingOpen={setIsBookingOpen} rightBtnOnClick={() => handleRightBtnClick()}>
@@ -179,6 +187,7 @@ const BookingCalender = ({ storeId, setIsBookingOpen }) => {
     </BookingBar>)
     : (<BookingCheck nowDate={nowDate} setIsBookingOpen={setIsBookingOpen} selectedMember={selectedMember} time={times}></BookingCheck>)
   );
+   
 };
 
-export default BookingCalender
+export default BookingCalender;
