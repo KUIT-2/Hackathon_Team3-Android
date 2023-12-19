@@ -15,7 +15,8 @@ const BookingCalender = ({ store, storeId, setIsBookingOpen }) => {
 
   const numberOfMembers = 20;
   const [selectedMember, setSelectedMember] = useState(0);
-  const [times, setTimes] = useState([]);
+  const [isSelected, setIsSelected] = useState(false)
+  const [times, setTimes] = useState();
   const [lunchStart, setLunchStart] = useState();
   // const [lunchEnd, setLunchEnd] = useState();
   // const [dinnerStart, setDinnerStart] = useState();
@@ -27,12 +28,15 @@ const BookingCalender = ({ store, storeId, setIsBookingOpen }) => {
 
   const setMembers = (member) => {
     setSelectedMember(member);
+    setIsSelected((prev) => !prev)
+    console.log(isSelected)
   };
 
   const memberComponents = Array.from(
     { length: numberOfMembers },
     (_, index) => (
       <BookingMember
+        isSelected={isSelected}
         key={index}
         text={`${index + 1}`}
         onClick={() => setMembers(index + 1)}
@@ -158,7 +162,8 @@ const BookingCalender = ({ store, storeId, setIsBookingOpen }) => {
   
   return (
     !isNext ? 
-      (<BookingBar leftBtn={"취소"} rightBtn={"확인"} setIsBookingOpen={setIsBookingOpen} rightBtnOnClick={() => handleRightBtnClick()}>
+      (<BookingBar leftBtn={"취소"} rightBtn={"확인"} setIsBookingOpen={setIsBookingOpen} rightBtnOnClick={() => handleRightBtnClick()}
+        leftBtnOnClick={() => setIsBookingOpen(false)}>
         <S.BookingCalenderHeader>
           <S.BookingCalenderToday onClick={() => setToday()}>오늘</S.BookingCalenderToday>
         </S.BookingCalenderHeader>
