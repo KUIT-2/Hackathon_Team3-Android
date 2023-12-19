@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import * as S from "./Store.styles";
 import { ArrowLeft, Home, BookMark, Share, Call } from "../../asset";
 import Tab from "../../components/Tab/Tab";
-
 import Booking from "../Booking/Booking";
 import StorePhotoSlider from "../../components/StorePhotoSlider/StorePhotoSlider";
 
@@ -11,6 +10,11 @@ const Store = () => {
   const { storeId } = useParams();
   const [store, setStore] = useState();
   const [reviews, setReviews] = useState();
+  const [menus, setMenus] = useState();
+  const [storePhotos, setStorePhotos] = useState();
+  const [photos, setPhotos] = useState();
+  const navigate = useNavigate();
+
   const fetchStore = async () => {
     try {
       const res = await fetch(
@@ -60,9 +64,7 @@ const Store = () => {
     fetchPhotos();
     console.log("Photos :", photos);
   }, []);
-  const [menus, setMenus] = useState();
-  const [storePhotos, setStorePhotos] = useState();
-  const [photos, setPhotos] = useState();
+
   const [isAvailable, setIsAvailable] = useState(true);
   const [isBookingOpen, setIsBookingOpen] = useState(false);
 
@@ -78,8 +80,8 @@ const Store = () => {
     <>
       <S.Header>
         <div className="svg-container">
-          <ArrowLeft />
-          <Home />
+          <ArrowLeft onClick={() => navigate(-1)} />
+          <Home onClick={() => navigate("/")} />
         </div>
         <div className="svg-container">
           <BookMark />

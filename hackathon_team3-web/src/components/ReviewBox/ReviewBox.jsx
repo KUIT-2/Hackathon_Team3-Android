@@ -8,7 +8,7 @@ const ReviewBox = ({ reviews }) => {
         <S.Container>
           <S.UserBox key={index}>
             <div className="profile"></div>
-            <p className="username">{review.user}</p>
+            <p className="username">{review.userName}</p>
           </S.UserBox>
           <S.Rate>
             <div className="rate-wrapper">
