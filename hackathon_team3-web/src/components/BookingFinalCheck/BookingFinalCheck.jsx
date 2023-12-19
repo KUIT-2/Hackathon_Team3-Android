@@ -13,7 +13,7 @@ import {
 import { useState } from 'react';
 import BookingFinish from '../BookingFinish/BookingFinish'
 
-const BookingFinalCheck = ({ store, nowDate, selectedMember, time, setIsBookingOpen }) => {
+const BookingFinalCheck = ({ store, nowDate, nowDay, selectedMember, time, setIsBookingOpen }) => {
 
   const [isNext, setIsNext] = useState(false);
 
@@ -38,7 +38,7 @@ const BookingFinalCheck = ({ store, nowDate, selectedMember, time, setIsBookingO
         <O.BookingCheckContainer>
             <O.Icon>
                 <IconCalender></IconCalender>
-                <O.IconLabel>{nowDate}</O.IconLabel>
+                <O.IconLabel>{nowDate} ({nowDay})</O.IconLabel>
             </O.Icon>
             <O.Icon>
                 <IconClock></IconClock>
@@ -59,7 +59,7 @@ const BookingFinalCheck = ({ store, nowDate, selectedMember, time, setIsBookingO
             <S.BookingCheckInputLabel>다시 보지 않기</S.BookingCheckInputLabel>
         </S.BookingCheckInput>
     </BookingBar>
-    ) : (<BookingFinish store={store} nowDate={nowDate} selectedMember={selectedMember} time={time} setIsBookingOpen={setIsBookingOpen}></BookingFinish>)
+    ) : (<BookingFinish store={store} nowDate={nowDate} nowDay={nowDay} selectedMember={selectedMember} time={time} setIsBookingOpen={setIsBookingOpen}></BookingFinish>)
     
   )
 }

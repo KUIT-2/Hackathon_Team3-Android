@@ -6,7 +6,7 @@ import * as S from "./BookingCheck.styles";
 import { IconCalender, IconClock, IconUsers } from "../../assets/index";
 import { useState } from "react";
 
-const BookingCheck = ({ store, nowDate, setIsBookingOpen, selectedMember, times }) => {
+const BookingCheck = ({ store, nowDate, nowDay, setIsBookingOpen, selectedMember, times }) => {
   const [isNext, setIsNext] = useState(false);
 
   const handleRightBtnClick = () => {
@@ -25,7 +25,7 @@ const BookingCheck = ({ store, nowDate, setIsBookingOpen, selectedMember, times 
         <S.BookingCheckContainer>
             <S.Icon>
                 <IconCalender></IconCalender>
-                <S.IconLabel>{nowDate}</S.IconLabel>
+                <S.IconLabel>{nowDate} ({nowDay})</S.IconLabel>
             </S.Icon>
             <S.Icon>
                 <IconClock></IconClock>
@@ -40,7 +40,7 @@ const BookingCheck = ({ store, nowDate, setIsBookingOpen, selectedMember, times 
             다른 고객님께도 피해가 될 수 있으므로 신중히 예약 부탁드립니다 :)
         </S.BookingCheckWarning>
     </BookingBar>
-    ): (<BookingFinalCheck store={store} nowDate={nowDate} selectedMember={selectedMember} time={times} setIsBookingOpen={setIsBookingOpen}></BookingFinalCheck>)
+    ): (<BookingFinalCheck store={store} nowDate={nowDate} nowDay={nowDay} selectedMember={selectedMember} time={times} setIsBookingOpen={setIsBookingOpen}></BookingFinalCheck>)
   )
 };
 
