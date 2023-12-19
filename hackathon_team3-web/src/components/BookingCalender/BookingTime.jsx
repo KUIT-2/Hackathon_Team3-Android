@@ -2,9 +2,9 @@ import React from 'react'
 
 import * as S from './BookingCalender.styles'
 
-const BookingTime = () => {
+const BookingTime = ({ startTime }) => {
   return (
-    <S.BookingTime>몇시몇분</S.BookingTime>
+    <S.BookingTime>{startTime}</S.BookingTime>
   )
 }
 
