@@ -20,8 +20,6 @@ export const CalendarContainer = styled.div`
   .calendar {
     margin-top: 16px;
     line-height: 2rem;
-    font-size: 16px;
-
 
         .react-calendar__navigation {
             display: flex;
@@ -32,7 +30,7 @@ export const CalendarContainer = styled.div`
             justify-content: center;
           }
         .react-calendar__navigation__label > span {
-            font-size: 14px;
+            font-size: 16px;
             font-weight: 500;
             color: #000;
         }
@@ -51,21 +49,21 @@ export const CalendarContainer = styled.div`
 
 export const BookingMemberContainer = styled.div`
   display: flex;
-  width: 100%;
   overflow-x: auto;
   white-space: nowrap;
   margin-top: 20px;
   margin-left: 24px;
+  margin-right: 24px;
   gap: 12px;
 `;
 
 export const BookingTimeContainer = styled.div`
     display: flex;
-    width: 100%;
     overflow-x: auto;
     white-space: nowrap;
     margin-top: 32px;
     margin-left: 24px;
+    margin-right: 24px;
     gap: 12px;
 `
 
