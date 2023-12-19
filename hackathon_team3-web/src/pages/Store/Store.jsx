@@ -64,10 +64,6 @@ const Store = () => {
           <span className="review">(333)</span>
         </span>
       </S.StoreInfoBox>
-      <S.AddBar>
-        <p>레스토랑 함께 고르기</p>
-        <button className="add-btn">+담기</button>
-      </S.AddBar>
       <Tab menus={menus} photos={photos} reviews={reviews} />
       <S.Location>
         <h4>매장 위치</h4>
