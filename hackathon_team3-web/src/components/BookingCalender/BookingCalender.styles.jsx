@@ -48,13 +48,29 @@ export const CalendarContainer = styled.div`
 `;
 
 export const BookingMemberContainer = styled.div`
-  display: flex;
-  overflow-x: auto;
-  white-space: nowrap;
-  margin-top: 20px;
-  margin-left: 24px;
+  border-radius: 24px;
+  overflow-x: hidden;
   margin-right: 24px;
-  gap: 12px;
+`;
+
+export const ReservationPeople = styled.div`
+  display: flex;
+  margin-left: 15px;
+`;
+
+export const PeopleButton = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid #d9d9d9;
+  cursor: pointer;
+  background-color: ${(props) => (props.isActive ? '#eb4f27' : "#FFF")};
+  color: ${(props) => (props.isActive ? '#FFF' : "#000")};
+  margin: 10px;
+  flex-shrink: 0;
 `;
 
 export const BookingTimeContainer = styled.div`
