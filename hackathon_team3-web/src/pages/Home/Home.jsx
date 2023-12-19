@@ -5,6 +5,7 @@ import HomeBottomBar from "../../components/HomeBottomBar";
 import HomeTop from "../../components/HomeTop";
 import LocationCategory from "../../components/LocationCategory";
 import HotPlaceList from "../../components/HotPlaceList";
+import BannerImage from "../../components/BannerImage";
 
 import BestIcon from '../../assets/Best.png'
 import OnlineWaitingIcon from '../../assets/OnlineWaiting.png'
@@ -22,13 +23,6 @@ import HotelDiningIcon from '../../assets/HotelDining.png'
 import SaveTopIcon from '../../assets/SaveTop.png'
 
 import { ArrowRightIcon } from "../../assets/index";
-
-const BannerImage = styled.div`
-  width: 375px;
-  height: 260px;
-  background: #D9D9D9;
-  margin-top: 10px;
-`;
 
 const Categories = styled.div`
   display: grid;
