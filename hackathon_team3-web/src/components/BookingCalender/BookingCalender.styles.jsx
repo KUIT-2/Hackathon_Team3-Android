@@ -74,14 +74,31 @@ export const PeopleButton = styled.div`
 `;
 
 export const BookingTimeContainer = styled.div`
-    display: flex;
-    overflow-x: auto;
-    white-space: nowrap;
-    margin-top: 32px;
-    margin-left: 24px;
-    margin-right: 24px;
-    gap: 12px;
+  border-radius: 24px;
+  overflow-x: hidden;
+  margin-right: 24px;
 `
+
+export const ReservationTime = styled.div`
+  display: flex;
+  margin-left: 15px;
+`
+
+export const TimeButton = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  padding: 10px;
+  width: 160px;
+  height: 39px;
+  border: 1px solid #d9d9d9;
+  cursor: pointer;
+  background-color: ${(props) => (props.isActive ? '#eb4f27' : "#FFF")};
+  color: ${(props) => (props.isActive ? '#FFF' : "#000")};
+  margin: 10px;
+  flex-shrink: 0;
+`;
 
 export const BookingMember = styled.div`
     display: flex;
@@ -110,5 +127,4 @@ export const BookingTime = styled.div`
     text-size: 14px;
     color: #fff;
     background: #ff3d00;
-
 `
