@@ -6,6 +6,7 @@ export const BookingCheckHeading = styled.div`
     margin-left: 24px;
     margin-bottom: 12px;
     font-size: 16px;
+    font-weight: 600;
 `;
 
 export const BookingCheckSubheading = styled.div`
@@ -20,6 +21,7 @@ export const BookingCheckName = styled.div`
     text-align: center;
     font-size: 20px;
     margin-top: 36px;
+    font-weight: 600;
 `
 
 export const BookingCheckLabel = styled.div`
@@ -54,6 +56,6 @@ export const BookingCheckWarning = styled.div`
     font-size: 14px;
     margin-left: 30px;
     margin-right: 25px;
-    margin-top: 60px;
+    margin-top: 40px;
     line-height: 20px;
 `

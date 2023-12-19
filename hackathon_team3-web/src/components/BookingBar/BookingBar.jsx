@@ -2,13 +2,13 @@ import React from 'react'
 
 import * as S from "./BookingBar.styles"
 
-const BookingBar = ({ children }) => {
+const BookingBar = ({ children, leftBtn, rightBtn }) => {
   return (
     <S.BookingBarContainer>
       {children}
       <S.BookingBtns>
-        <S.BookingCancel>취소</S.BookingCancel>
-        <S.BookingGo>확인</S.BookingGo>
+        <S.BookingCancel>{leftBtn}</S.BookingCancel>
+        <S.BookingGo>{rightBtn}</S.BookingGo>
       </S.BookingBtns>
     </S.BookingBarContainer>
   )

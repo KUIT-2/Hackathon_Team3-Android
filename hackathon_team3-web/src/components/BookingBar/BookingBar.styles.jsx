@@ -2,7 +2,6 @@ import styled from "styled-components"
 
 export const BookingBarContainer = styled.div`
     width: 100%;
-    height: 528px;
     position: absolute;
     bottom: 0px;
     border-radius: 24px;
@@ -13,6 +12,7 @@ export const BookingBtns = styled.div`
     display: flex;
     justify-content: center;
     margin-top: 30px;
+    margin-bottom: 30px;
 `
 export const BookingCancel = styled.div`
     display: flex;
