@@ -151,6 +151,7 @@ const BookingCalender = ({ storeId, setIsBookingOpen }) => {
       rightBtn={"확인"}
       setIsBookingOpen={setIsBookingOpen}
       rightBtnOnClick={() => handleRightBtnClick()}
+      leftBtnOnClick={() => setIsBookingOpen(false)}
     >
       <S.BookingCalenderHeader>
         <S.BookingCalenderToday onClick={() => setToday()}>
