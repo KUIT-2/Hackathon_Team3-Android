@@ -6,3 +6,8 @@ export { ReactComponent as MessageIcon } from './Message.svg'
 export { ReactComponent as UserIcon } from './User.svg'
 export { ReactComponent as BellIcon } from './Bell.svg'
 export { ReactComponent as BookmarkIcon } from './Bookmark.svg'
+export { ReactComponent as ArrowLeft } from "./arrow-left.svg";
+export { ReactComponent as Home } from "./home.svg";
+export { ReactComponent as BookMark } from "./header-mark.svg";
+export { ReactComponent as Share } from "./share.svg";
+export { ReactComponent as Call } from "./call.svg";
