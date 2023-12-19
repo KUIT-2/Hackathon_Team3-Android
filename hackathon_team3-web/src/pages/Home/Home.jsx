@@ -1,28 +1,32 @@
 import React from "react";
-import styled from "styled-components";
+import styled from 'styled-components';
 
 import HomeBottomBar from "../../components/HomeBottomBar";
 import HomeTop from "../../components/HomeTop";
 import LocationCategory from "../../components/LocationCategory";
+import HotPlaceList from "../../components/HotPlaceList";
 
-import BestIcon from "../../assets/Best.png";
-import OnlineWaitingIcon from "../../assets/OnlineWaiting.png";
-import HiddenPlaceIcon from "../../assets/HiddenPlace.png";
-import CakeIcon from "../../assets/Cake.png";
-import DeliciousSpotIcon from "../../assets/DeliciousSpot.png";
-import YearEndBookingIcon from "../../assets/YearEndBooking.png";
-import GroupBookingIcon from "../../assets/GroupBooking.png";
-import WineDeliveryIcon from "../../assets/WineDelivery.png";
-import MonthBestIcon from "../../assets/MonthBest.png";
-import WaitingTopIcon from "../../assets/WaitingTop.png";
-import OmakaseIcon from "../../assets/Omakase.png";
-import CowmakaseIcon from "../../assets/Cowmakase.png";
-import HotelDiningIcon from "../../assets/HotelDining.png";
-import SaveTopIcon from "../../assets/SaveTop.png";
+import BestIcon from '../../assets/Best.png'
+import OnlineWaitingIcon from '../../assets/OnlineWaiting.png'
+import HiddenPlaceIcon from '../../assets/HiddenPlace.png'
+import CakeIcon from '../../assets/Cake.png'
+import DeliciousSpotIcon from '../../assets/DeliciousSpot.png'
+import YearEndBookingIcon from '../../assets/YearEndBooking.png'
+import GroupBookingIcon from '../../assets/GroupBooking.png'
+import WineDeliveryIcon from '../../assets/WineDelivery.png'
+import MonthBestIcon from '../../assets/MonthBest.png'
+import WaitingTopIcon from '../../assets/WaitingTop.png'
+import OmakaseIcon from '../../assets/Omakase.png'
+import CowmakaseIcon from '../../assets/Cowmakase.png'
+import HotelDiningIcon from '../../assets/HotelDining.png'
+import SaveTopIcon from '../../assets/SaveTop.png'
+
+import { ArrowRightIcon } from "../../assets/index";
 
 const BannerImage = styled.div`
+  width: 375px;
   height: 260px;
-  background: #d9d9d9;
+  background: #D9D9D9;
   margin-top: 10px;
 `;
 
@@ -52,7 +56,7 @@ const CategoryText = styled.div`
 
 const BorderGray = styled.div`
   height: 21px;
-  background: #f9f8f8;
+  background: #F9F8F8;
 `;
 
 const Where = styled.div`
@@ -62,6 +66,52 @@ const Where = styled.div`
   line-height: 150%;
   margin-top: 14px;
   margin-left: 23px;
+`;
+
+const HotPlace = styled.div`
+  display: flex;
+  align-items: center;
+  margin-top: 24px;
+  margin-left: 23px;
+  margin-right: 10px;
+  justify-content: space-between;
+`;
+
+const HotPlaceBest = styled.div`
+
+`;
+
+const WaitingHotPlaceBest = styled.div`
+  color: #222;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 150%;
+`;
+
+const HotPlaceDescription = styled.div`
+  color: #838383;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 150%;
+`;
+
+const BottemPadding = styled.div`
+  height: 100px;
+`;
+
+const MoreText = styled.div`
+    font-size: 6px;
+    font-weight: 600;
+    line-height: 150%;
+    flex-shrink: 0;
+    color: #222;
+    padding-top: 1px;
+`;
+
+const More = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;
 
 const Home = () => {
@@ -134,15 +184,24 @@ const Home = () => {
           <CategoryText>저장TOP</CategoryText>
         </Category>
       </Categories>
-
       <BorderGray />
       <Where>어디로 가시나요?</Where>
-
       <LocationCategory />
-
+      <HotPlace>
+        <HotPlaceBest>
+          <WaitingHotPlaceBest>웨이팅 핫플레이스 BEST</WaitingHotPlaceBest>
+          <HotPlaceDescription>핫 한 웨이팅 라인업, 이제 캐치테이블에서!</HotPlaceDescription>
+        </HotPlaceBest>
+        <More>
+          <MoreText>전체보기</MoreText>
+          <ArrowRightIcon />
+        </More>
+      </HotPlace>
+      <HotPlaceList />
+      <BottemPadding></BottemPadding>
       <HomeBottomBar />
     </div>
-  );
+  )
 };
 
 export default Home;

@@ -10,6 +10,13 @@ const GlobalStyle = createGlobalStyle`
   h3, h4, p {
     margin: 0;
   }
+
+  body {
+    -ms-overflow-style: none;
+  }
+  ::-webkit-scrollbar {
+      display: none;
+  }
 `;
 
 function App() {
