@@ -59,15 +59,42 @@ export const BookingMemberContainer = styled.div`
   gap: 12px;
 `;
 
+export const BookingTimeContainer = styled.div`
+    display: flex;
+    width: 100%;
+    overflow-x: auto;
+    white-space: nowrap;
+    margin-top: 32px;
+    margin-left: 24px;
+    gap: 12px;
+`
+
 export const BookingMember = styled.div`
-  display: flex;
-  padding: 10px;
-  width: 50px;
-  height: 44px;
-  border-radius: 100%;
-  border: 1px solid #d9d9d9;
-  justify-content: center;
-  align-items: center;
-  font-size: 14px;
-  color: #222;
-`;
+    display: flex;
+    padding: 10px;
+    width: 50px;
+    height: 44px;
+    border-radius: 100%;
+    border: 1px solid #D9D9D9;
+    justify-content: center;
+    align-items: center;
+
+    text-size: 14px;
+    color: #222;
+
+`
+
+export const BookingTime = styled.div`
+    display: flex;
+    padding: 10px;
+    width: 160px;
+    height: 39px;
+    border-radius: 4px;
+    justify-content: center;
+    align-items: center;
+
+    text-size: 14px;
+    color: #fff;
+    background: #ff3d00;
+
+`
