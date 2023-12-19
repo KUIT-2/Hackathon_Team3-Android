@@ -65,8 +65,20 @@ const Store = () => {
     console.log("Photos :", photos);
   }, []);
 
+  const [isScrolled, setIsScrolled] = useState(false);
   const [isAvailable, setIsAvailable] = useState(true);
   const [isBookingOpen, setIsBookingOpen] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrolled = window.scrollY > 100;
+      setIsScrolled(scrolled);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   const handleBookingButtonClick = () => {
     if (isAvailable) {
@@ -78,7 +90,7 @@ const Store = () => {
   }
   return (
     <>
-      <S.Header>
+      <S.Header isScrolled={isScrolled}>
         <div className="svg-container">
           <ArrowLeft onClick={() => navigate(-1)} />
           <Home onClick={() => navigate("/")} />

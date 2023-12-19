@@ -4,6 +4,7 @@ export const Header = styled.div`
   z-index: 1;
   display: flex;
   justify-content: space-between;
+  background-color: ${(props) => (props.isScrolled ? "white" : "none")};
   width: 100%;
   align-items: center;
   position: fixed;
@@ -15,6 +16,7 @@ export const Header = styled.div`
     gap: 15px;
     align-items: center;
   }
+  transition: background-color 0.5s ease;
 `;
 
 export const StoreInfoBox = styled.div`
