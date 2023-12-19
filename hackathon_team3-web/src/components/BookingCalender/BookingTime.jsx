@@ -2,9 +2,9 @@ import React from 'react'
 
 import * as S from './BookingCalender.styles'
 
-const BookingTime = ({ startTime }) => {
+const BookingTime = ({ startTime, onClick }) => {
   return (
-    <S.BookingTime>{startTime}</S.BookingTime>
+    <S.BookingTime onClick={onClick}>{startTime}</S.BookingTime>
   )
 }
 

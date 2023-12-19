@@ -6,7 +6,7 @@ import * as S from './BookingCheck.styles'
 import { IconCalender, IconClock, IconUsers } from '../../assets/index'
 import { useState } from 'react';
 
-const BookingCheck = ({ setIsBookingOpen }) => {
+const BookingCheck = ({ nowDate, setIsBookingOpen, selectedMember, times }) => {
 
   const [isNext, setIsNext] = useState(false);
 
@@ -26,15 +26,15 @@ const BookingCheck = ({ setIsBookingOpen }) => {
         <S.BookingCheckContainer>
             <S.Icon>
                 <IconCalender></IconCalender>
-                <S.IconLabel>1.06(금)</S.IconLabel>
+                <S.IconLabel>{nowDate}</S.IconLabel>
             </S.Icon>
             <S.Icon>
                 <IconClock></IconClock>
-                <S.IconLabel>오후 6:30</S.IconLabel>
+                <S.IconLabel>오후 {times}</S.IconLabel>
             </S.Icon>
             <S.Icon style={{'marginRight': '0px'}}>
                 <IconUsers></IconUsers>
-                <S.IconLabel>2명</S.IconLabel>
+                <S.IconLabel>{selectedMember}명</S.IconLabel>
             </S.Icon>
         </S.BookingCheckContainer>
         <S.BookingCheckWarning>당일취소 및 노쇼는 레스토랑 뿐만 아니라

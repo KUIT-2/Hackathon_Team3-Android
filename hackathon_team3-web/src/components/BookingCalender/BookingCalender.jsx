@@ -57,7 +57,7 @@ const BookingCalender = ({ storeId, setIsBookingOpen }) => {
       const data = await response.json();
       // console.log(data)
 
-      setTimes(data.result)
+      //setTimes(data.result)
 
       setLunchStart(new Date(new Date(data.result.lunchStart) - 32400000));
       // setLunchEnd(new Date(data.result.lunchEnd))
@@ -112,7 +112,6 @@ const BookingCalender = ({ storeId, setIsBookingOpen }) => {
     onChange(today)
   };
 
-
   useEffect(() => {
     getTime(storeId);
 
@@ -126,10 +125,15 @@ const BookingCalender = ({ storeId, setIsBookingOpen }) => {
       return { startTime, endTime };
     });
 
+    const setTime = (startTime) => {
+      setTimes(prevTimes => [...prevTimes, startTime]);
+    };
+
     const components = timeIntervals.map((timeInterval, index) => (
       <BookingTime
         key={index}
         startTime={timeInterval.startTime}
+        onClick={() => setTime(timeInterval.startTime)}
       />
     ));
 
@@ -173,7 +177,7 @@ const BookingCalender = ({ storeId, setIsBookingOpen }) => {
         {timeComponents}
       </S.BookingTimeContainer>
     </BookingBar>)
-    : (<BookingCheck></BookingCheck>)
+    : (<BookingCheck nowDate={nowDate} setIsBookingOpen={setIsBookingOpen} selectedMember={selectedMember} time={times}></BookingCheck>)
   );
 };
 
