@@ -2,8 +2,9 @@ import React, { useState } from "react";
 import * as S from "./Tab.styles";
 import MenuBox from "../MenuBox/MenuBox";
 import Photos from "../Photos/Photos";
+import ReviewBox from "../ReviewBox/ReviewBox";
 
-const Tab = ({ menus, photos }) => {
+const Tab = ({ menus, photos, reviews }) => {
   const [activeTab, setActiveTab] = useState(0);
   const handleTabClick = (index) => {
     setActiveTab(index);
@@ -13,7 +14,7 @@ const Tab = ({ menus, photos }) => {
       "",
       <MenuBox menus={menus} />,
       <Photos photos={photos} />,
-      "Review",
+      <ReviewBox reviews={reviews} />,
     ];
 
     return tabContents[activeTab];

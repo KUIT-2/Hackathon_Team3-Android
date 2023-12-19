@@ -12,6 +12,23 @@ const Store = () => {
     { name: "철판쭈꾸미삼겹", price: 16000 },
   ];
   const photos = ["1", "2", "3", "4", "5", "6", "7"];
+  const reviews = [
+    {
+      user: "부드러운 맛사냥꾼_99356",
+      rate: 5.0,
+      date: "2023.12.10",
+      photo: "photo",
+      description:
+        "가나다라마바사아자차카타파하샤라랄라랄랆ㄴㅇㄹㄴㅇㅁㄹㅇㅇㄹㄷㄱㄴㅇㄻㄷㄱ",
+    },
+    {
+      user: "김아현이",
+      rate: 5.0,
+      date: "2023.11.15",
+      photo: "photo",
+      description: "요기 맛난데.. 줄설정돈가.. 좋았어요 ^^",
+    },
+  ];
   const [isAvailable, setIsAvailable] = useState(true);
   const [isBookingOpen, setIsBookingOpen] = useState(false);
 
@@ -49,7 +66,7 @@ const Store = () => {
         <p>레스토랑 함께 고르기</p>
         <button className="add-btn">+담기</button>
       </S.AddBar>
-      <Tab menus={menus} photos={photos} />
+      <Tab menus={menus} photos={photos} reviews={reviews} />
       <S.Location>
         <h4>매장 위치</h4>
         <p>매장 주소</p>
