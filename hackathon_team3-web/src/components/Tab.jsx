@@ -1,31 +1,5 @@
 import React, { useState } from "react";
-import styled from "styled-components";
-
-const TabContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-`;
-
-const TabMenusContainer = styled.div`
-  display: flex;
-  width: 100%;
-  height: 50px;
-  .activeTab {
-    border-bottom: 3px solid black;
-    font-weight: bold;
-  }
-  .tab {
-    border-bottom: 3px solid #d9d9d9;
-    color: #989898;
-  }
-`;
-
-const TabMenu = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 25%;
-`;
+import * as S from "./Tab.styles";
 
 const Tab = () => {
   const [activeTab, setActiveTab] = useState(0);
@@ -38,20 +12,20 @@ const Tab = () => {
     return tabContents[activeTab];
   };
   return (
-    <TabContainer>
-      <TabMenusContainer>
+    <S.TabContainer>
+      <S.TabMenusContainer>
         {["홈", "메뉴", "사진", "리뷰"].map((tab, index) => (
-          <TabMenu
+          <S.TabMenu
             key={index}
             onClick={() => handleTabClick(index)}
             className={index === activeTab ? "activeTab" : "tab"}
           >
             {tab}
-          </TabMenu>
+          </S.TabMenu>
         ))}
-      </TabMenusContainer>
+      </S.TabMenusContainer>
       <div>{renderTabContent()}</div>
-    </TabContainer>
+    </S.TabContainer>
   );
 };
 
