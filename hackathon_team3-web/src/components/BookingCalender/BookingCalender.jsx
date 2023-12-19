@@ -4,7 +4,6 @@ import BookingMember from './BookingMember'
 import Calendar from 'react-calendar'
 import './Calendar.css'
 import moment from "moment"
-import 'react-calendar/dist/Calendar.css'
 
 import * as S from "./BookingCalender.styles"
 

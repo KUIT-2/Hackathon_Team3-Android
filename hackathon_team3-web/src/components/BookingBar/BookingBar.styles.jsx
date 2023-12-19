@@ -15,7 +15,7 @@ export const BookingBarContainer = styled.div`
     position: fixed;
     bottom: 0px;
     border-radius: 24px;
-    background: #eee;
+    background: #FFF;
 `
 
 export const BookingBtns = styled.div`
