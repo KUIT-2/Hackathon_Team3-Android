@@ -49,13 +49,15 @@ export const CalendarContainer = styled.div`
 
 export const BookingMemberContainer = styled.div`
   border-radius: 24px;
-  overflow-x: hidden;
+  overflow-x: auto;
+  white-space: nowrap;
   margin-right: 24px;
+  margin-left: 10px;
 `;
 
 export const ReservationPeople = styled.div`
   display: flex;
-  margin-left: 15px;
+  margin-right: 15px;
 `;
 
 export const PeopleButton = styled.div`
