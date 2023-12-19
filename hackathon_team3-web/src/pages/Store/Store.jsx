@@ -1,82 +1,17 @@
-import React from "react";
-import styled from "styled-components";
+import React, { useState } from "react";
+import * as S from "./Store.styles";
 import { ReactComponent as ArrowLeft } from "../../asset/arrow-left.svg";
 import { ReactComponent as Home } from "../../asset/home.svg";
 import { ReactComponent as BookMark } from "../../asset/header-mark.svg";
 import { ReactComponent as Share } from "../../asset/share.svg";
+import { ReactComponent as Call } from "../../asset/call.svg";
 import Tab from "../../components/Tab";
 
-const Header = styled.div`
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-  align-items: center;
-  position: fixed;
-  top: 0;
-  height: 60px;
-  padding: 20px;
-  .svg-container {
-    display: flex;
-    gap: 15px;
-    align-items: center;
-  }
-`;
-
-const StoreImage = styled.div`
-  height: 250px;
-  background-color: #d9d9d9;
-`;
-
-const StoreInfoBox = styled.div`
-  display: flex;
-  flex-direction: column;
-  padding: 20px;
-  gap: 10px;
-  border-bottom: 9px solid #d9d9d9;
-  .info {
-    display: flex;
-    color: #989898;
-    font-size: 12px;
-    gap: 5px;
-  }
-  .rates {
-    display: flex;
-    gap: 5px;
-    .star {
-      color: #f5c654;
-    }
-    .rate {
-      font-weight: bold;
-    }
-    .review {
-      color: #989898;
-    }
-  }
-`;
-
-const AddBar = styled.div`
-  display: flex;
-  justify-content: space-between;
-  padding: 10px 20px;
-  border-bottom: 9px solid #d9d9d9;
-  p {
-    font-weight: bold;
-    display: flex;
-    align-items: center;
-  }
-  .add-btn {
-    border-radius: 20px;
-    border: 2px solid #d9d9d9;
-    background-color: white;
-    font-size: 14px;
-    padding: 7px 10px;
-  }
-`;
-
 const Store = () => {
+  const [isAvailable, setIsAvailable] = useState(false);
   return (
     <>
-      <Header>
+      <S.Header>
         <div className="svg-container">
           <ArrowLeft />
           <Home />
@@ -85,9 +20,9 @@ const Store = () => {
           <BookMark />
           <Share />
         </div>
-      </Header>
-      <StoreImage></StoreImage>
-      <StoreInfoBox>
+      </S.Header>
+      <S.StoreImage></S.StoreImage>
+      <S.StoreInfoBox>
         <h3>음식점이름</h3>
         <p>음식점 소개</p>
         <span className="info">
@@ -98,12 +33,34 @@ const Store = () => {
           <span className="rate">4.3</span>
           <span className="review">(333)</span>
         </span>
-      </StoreInfoBox>
-      <AddBar>
+      </S.StoreInfoBox>
+      <S.AddBar>
         <p>레스토랑 함께 고르기</p>
         <button className="add-btn">+담기</button>
-      </AddBar>
+      </S.AddBar>
       <Tab />
+      <S.Location>
+        <h4>매장 위치</h4>
+        <p>매장 주소</p>
+      </S.Location>
+      <S.DetailInfo>
+        <h4>상세정보</h4>
+        <p className="title">전화번호</p>
+        <span className="call">
+          <Call />
+          <span className="phone-number">050-71409-6602</span>
+        </span>
+        <p className="title">매장 소개</p>
+        <span className="info">안녕하세요</span>
+        <p className="title">영업시간</p>
+        <span className="info">11:30 - 23:00</span>
+      </S.DetailInfo>
+      <S.Footer>
+        <BookMark />
+        <S.BookingButton isAvailable={isAvailable}>
+          {isAvailable ? "웨이팅 등록하기" : "바로 입장 가능해요"}
+        </S.BookingButton>
+      </S.Footer>
     </>
   );
 };

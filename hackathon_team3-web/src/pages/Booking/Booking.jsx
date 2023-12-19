@@ -4,6 +4,7 @@ import BookingCheck from '../../components/BookingCheck/BookingCheck'
 import BookingFinalCheck from '../../components/BookingFinalCheck/BookingFinalCheck'
 import BookingFinish from '../../components/BookingFinish/BookingFinish'
 
+
 const Booking = () => {
   return (
     <BookingCalender></BookingCalender>
