@@ -7,7 +7,7 @@ import moment from "moment"
 
 import * as S from "./BookingCalender.styles"
 
-const BookingCalender = () => {
+const BookingCalender = ({ setIsBookingOpen }) => {
   const numberOfMembers = 80;
   const [selectedMember, setSelectedMember] = useState(0);
 
@@ -33,7 +33,7 @@ const BookingCalender = () => {
   }
 
   return (
-    <BookingBar leftBtn={"취소"} rightBtn={"확인"}>
+    <BookingBar leftBtn={"취소"} rightBtn={"확인"} setIsBookingOpen={setIsBookingOpen} >
       <S.BookingCalenderHeader>
         <S.BookingCalenderToday>오늘</S.BookingCalenderToday>
       </S.BookingCalenderHeader>
@@ -58,9 +58,7 @@ const BookingCalender = () => {
       {memberComponents}
     </S.BookingMemberContainer>
     </BookingBar>
-  )
-}
+  );
+};
 
 export default BookingCalender
-
-// 서현이 넘 예뻐~ 귀여엉 정답 경은언니
