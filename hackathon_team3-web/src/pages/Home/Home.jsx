@@ -1,5 +1,5 @@
 import React from "react";
-import styled from 'styled-components';
+import styled from "styled-components";
 
 import HomeBottomBar from "../../components/HomeBottomBar";
 import HomeTop from "../../components/HomeTop";
@@ -7,20 +7,20 @@ import LocationCategory from "../../components/LocationCategory";
 import HotPlaceList from "../../components/HotPlaceList";
 import BannerImage from "../../components/BannerImage";
 
-import BestIcon from '../../assets/Best.png'
-import OnlineWaitingIcon from '../../assets/OnlineWaiting.png'
-import HiddenPlaceIcon from '../../assets/HiddenPlace.png'
-import CakeIcon from '../../assets/Cake.png'
-import DeliciousSpotIcon from '../../assets/DeliciousSpot.png'
-import YearEndBookingIcon from '../../assets/YearEndBooking.png'
-import GroupBookingIcon from '../../assets/GroupBooking.png'
-import WineDeliveryIcon from '../../assets/WineDelivery.png'
-import MonthBestIcon from '../../assets/MonthBest.png'
-import WaitingTopIcon from '../../assets/WaitingTop.png'
-import OmakaseIcon from '../../assets/Omakase.png'
-import CowmakaseIcon from '../../assets/Cowmakase.png'
-import HotelDiningIcon from '../../assets/HotelDining.png'
-import SaveTopIcon from '../../assets/SaveTop.png'
+import BestIcon from "../../assets/Best.png";
+import OnlineWaitingIcon from "../../assets/OnlineWaiting.png";
+import HiddenPlaceIcon from "../../assets/HiddenPlace.png";
+import CakeIcon from "../../assets/Cake.png";
+import DeliciousSpotIcon from "../../assets/DeliciousSpot.png";
+import YearEndBookingIcon from "../../assets/YearEndBooking.png";
+import GroupBookingIcon from "../../assets/GroupBooking.png";
+import WineDeliveryIcon from "../../assets/WineDelivery.png";
+import MonthBestIcon from "../../assets/MonthBest.png";
+import WaitingTopIcon from "../../assets/WaitingTop.png";
+import OmakaseIcon from "../../assets/Omakase.png";
+import CowmakaseIcon from "../../assets/Cowmakase.png";
+import HotelDiningIcon from "../../assets/HotelDining.png";
+import SaveTopIcon from "../../assets/SaveTop.png";
 
 import { ArrowRightIcon } from "../../assets/index";
 
@@ -28,7 +28,7 @@ const Categories = styled.div`
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   margin: 24px 21px 17px 22px;
-  gap: 14px 18px;
+  gap: 14px 5px;
 `;
 
 const Category = styled.div`
@@ -50,7 +50,7 @@ const CategoryText = styled.div`
 
 const BorderGray = styled.div`
   height: 21px;
-  background: #F9F8F8;
+  background: #f9f8f8;
 `;
 
 const Where = styled.div`
@@ -71,9 +71,7 @@ const HotPlace = styled.div`
   justify-content: space-between;
 `;
 
-const HotPlaceBest = styled.div`
-
-`;
+const HotPlaceBest = styled.div``;
 
 const WaitingHotPlaceBest = styled.div`
   color: #222;
@@ -94,12 +92,12 @@ const BottemPadding = styled.div`
 `;
 
 const MoreText = styled.div`
-    font-size: 6px;
-    font-weight: 600;
-    line-height: 150%;
-    flex-shrink: 0;
-    color: #222;
-    padding-top: 1px;
+  font-size: 6px;
+  font-weight: 600;
+  line-height: 150%;
+  flex-shrink: 0;
+  color: #222;
+  padding-top: 1px;
 `;
 
 const More = styled.div`
@@ -184,7 +182,9 @@ const Home = () => {
       <HotPlace>
         <HotPlaceBest>
           <WaitingHotPlaceBest>웨이팅 핫플레이스 BEST</WaitingHotPlaceBest>
-          <HotPlaceDescription>핫 한 웨이팅 라인업, 이제 캐치테이블에서!</HotPlaceDescription>
+          <HotPlaceDescription>
+            핫 한 웨이팅 라인업, 이제 캐치테이블에서!
+          </HotPlaceDescription>
         </HotPlaceBest>
         <More>
           <MoreText>전체보기</MoreText>
@@ -195,7 +195,7 @@ const Home = () => {
       <BottemPadding></BottemPadding>
       <HomeBottomBar />
     </div>
-  )
+  );
 };
 
 export default Home;
