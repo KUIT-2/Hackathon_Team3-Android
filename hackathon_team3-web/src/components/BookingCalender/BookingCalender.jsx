@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import BookingBar from '../BookingBar/BookingBar'
 import BookingMember from './BookingMember'
 import Calendar from 'react-calendar'
-import 'react-calendar/dist/Calendar.css'
+import './Calendar.css'
 import moment from "moment"
 
 import * as S from "./BookingCalender.styles"

@@ -22,31 +22,33 @@ export const CalendarContainer = styled.div`
     line-height: 2rem;
     font-size: 16px;
 
-    .react-calendar__navigation {
-      display: flex;
-      margin-left: 65px;
-      height: 44px;
-      margin-bottom: 1em;
-      width: 60%;
-      justify-content: center;
+
+        .react-calendar__navigation {
+            display: flex;
+            margin-left: 65px;
+            height: 44px;
+            margin-bottom: 1em;
+            width: 60%;
+            justify-content: center;
+          }
+        .react-calendar__navigation__label > span {
+            font-size: 14px;
+            font-weight: 500;
+            color: #000;
+        }
+        .react-calendar__month-view__weekdays__weekday abbr {
+            text-decoration: none;
+        }
+        .react-calendar__tile--active {
+            width: 15px;
+            height: 50px;
+            color: #fff;
+            background: #ff3d00;
+            border-radius: 100%;
+        }
     }
-    .react-calendar__navigation__label > span {
-      font-size: 14px;
-      font-weight: 500;
-      color: #000;
-    }
-    .react-calendar__month-view__weekdays__weekday abbr {
-      text-decoration: none;
-    }
-    .react-calendar__tile--active {
-      width: 15px;
-      height: 50px;
-      color: #fff;
-      background: #ff3d00;
-      border-radius: 100%;
-    }
-  }
-`;
+`
+
 export const BookingMemberContainer = styled.div`
   display: flex;
   width: 100%;

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled from 'styled-components';
 
 import Store1Image from '../assets/1c5bc5b1-c8cb-46c3-92e4-938f2f3a9d3a.png'
@@ -10,7 +10,11 @@ import Store6Image from '../assets/8sbiubnuq7hywejbm33fja_235817270580771.jpg'
 import Store7Image from '../assets/67ce22748153432697d2352e8177ca48.jpeg'
 import Store8Image from '../assets/246dd332-98db-4ff6-b665-db4edc33a04e.png'
 
-import { StarIcon, BookmarkIcon2, MoreIcon } from "../assets/index";
+import { MoreIcon } from "../assets/index";
+
+import { getStores } from "../apis/Restaurants";
+
+import StoreItem from "../components/StoreItem";
 
 const StoreContainer = styled.div`
     display: flex;
@@ -18,52 +22,6 @@ const StoreContainer = styled.div`
     overflow-x: auto;
     gap: 10px;
 
-`;
-
-const StoreItem = styled.div`
-
-
-`;
-
-const StoreImage = styled.img`
-  width: 180px;
-  height: 180px;
-  margin-bottom: 8px;
-  border-radius: 10px;
-`;
-
-const BookmarkInfo = styled.div`
-    display: flex;
-    justify-content: space-between;
-`;
-
-const StoreInfo = styled.div`
-    display: flex;
-    flex-direction: column;
-    gap: 2px;
-`;
-
-const StoreName = styled.div`
-
-`;
-
-const RateInfo = styled.div`
-    display: flex;
-    gap: 5px;
-    align-items: center;
-    justify-content: center;
-`;
-
-const Rate = styled.div`
-    padding-top: 4px;
-`;
-
-const StoreCategory = styled.div`
-  color: #838383;
-  font-size: 13px;
-  font-weight: 600;
-  line-height: 150%;
-  padding-top: 3px;
 `;
 
 const More = styled.div`
@@ -94,78 +52,32 @@ const SeeMore = styled.div`
 `;
 
 const HotPlaceList = () => {
+    const [stores, setStores] = useState();
+
+    useEffect(() => {
+        const fetchStoresData = async () => {
+        try {
+            const result = await getStores();
+            setStores(result.restaurantList);
+        } catch (error) {
+            console.error("Error fetching stores:", error);
+            setStores([]);
+        }
+        };
+        fetchStoresData();
+    }, []);
+
+    if (!stores) {
+        <div>Loading...</div>;
+        return;
+    }
+
     return (
         <StoreContainer>
-            <StoreItem>
-                <StoreImage src={Store1Image}/>
-                <BookmarkInfo>
-                    <StoreInfo>
-                        <StoreName>하이탓치 본점</StoreName>
-                        <RateInfo>
-                            <StarIcon />
-                            <Rate>4.6</Rate>
-                            <StoreCategory>이자카야, 부천</StoreCategory>
-                        </RateInfo>
-                    </StoreInfo>
-                    <BookmarkIcon2 />
-                </BookmarkInfo>
-            </StoreItem>
-            <StoreItem>
-                <StoreImage src={Store1Image}/>
-                <BookmarkInfo>
-                    <StoreInfo>
-                        <StoreName>하이탓치 본점</StoreName>
-                        <RateInfo>
-                            <StarIcon />
-                            <Rate>4.6</Rate>
-                            <StoreCategory>이자카야, 부천</StoreCategory>
-                        </RateInfo>
-                    </StoreInfo>
-                    <BookmarkIcon2 />
-                </BookmarkInfo>
-            </StoreItem>
-            <StoreItem>
-                <StoreImage src={Store1Image}/>
-                <BookmarkInfo>
-                    <StoreInfo>
-                        <StoreName>하이탓치 본점</StoreName>
-                        <RateInfo>
-                            <StarIcon />
-                            <Rate>4.6</Rate>
-                            <StoreCategory>이자카야, 부천</StoreCategory>
-                        </RateInfo>
-                    </StoreInfo>
-                    <BookmarkIcon2 />
-                </BookmarkInfo>
-            </StoreItem>
-            <StoreItem>
-                <StoreImage src={Store1Image}/>
-                <BookmarkInfo>
-                    <StoreInfo>
-                        <StoreName>하이탓치 본점</StoreName>
-                        <RateInfo>
-                            <StarIcon />
-                            <Rate>4.6</Rate>
-                            <StoreCategory>이자카야, 부천</StoreCategory>
-                        </RateInfo>
-                    </StoreInfo>
-                    <BookmarkIcon2 />
-                </BookmarkInfo>
-            </StoreItem>
-            <StoreItem>
-                <StoreImage src={Store1Image}/>
-                <BookmarkInfo>
-                    <StoreInfo>
-                        <StoreName>하이탓치 본점</StoreName>
-                        <RateInfo>
-                            <StarIcon />
-                            <Rate>4.6</Rate>
-                            <StoreCategory>이자카야, 부천</StoreCategory>
-                        </RateInfo>
-                    </StoreInfo>
-                    <BookmarkIcon2 />
-                </BookmarkInfo>
-            </StoreItem>
+            {stores.map((store) => (
+                <StoreItem key={store.restaurantId} store={store} />
+            ))}
+            
             <SeeMore>
                 <More>
                     <MoreIcon />
