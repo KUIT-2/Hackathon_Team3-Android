@@ -1,0 +1,8 @@
+export { ReactComponent as HomeIcon } from './home.svg'
+export { ReactComponent as SearchIcon } from './Search.svg'
+export { ReactComponent as SearchSmallIcon } from './SearchSmall.svg'
+export { ReactComponent as CalendarIcon } from './Calendar.svg'
+export { ReactComponent as MessageIcon } from './Message.svg'
+export { ReactComponent as UserIcon } from './User.svg'
+export { ReactComponent as BellIcon } from './Bell.svg'
+export { ReactComponent as BookmarkIcon } from './Bookmark.svg'
