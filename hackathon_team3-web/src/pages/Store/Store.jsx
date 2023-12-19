@@ -10,6 +10,7 @@ const Store = () => {
     { name: "소금구이", price: 15000 },
     { name: "철판쭈꾸미삼겹", price: 16000 },
   ];
+  const photos = ["1", "2", "3", "4", "5", "6", "7"];
   const [isAvailable, setIsAvailable] = useState(true);
   const navigate = useNavigate();
   const handleBookingButtonClick = () => {
@@ -44,7 +45,7 @@ const Store = () => {
         <p>레스토랑 함께 고르기</p>
         <button className="add-btn">+담기</button>
       </S.AddBar>
-      <Tab menus={menus} />
+      <Tab menus={menus} photos={photos} />
       <S.Location>
         <h4>매장 위치</h4>
         <p>매장 주소</p>

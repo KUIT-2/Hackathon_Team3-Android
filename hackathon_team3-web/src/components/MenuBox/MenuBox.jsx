@@ -11,7 +11,7 @@ const MenuBox = ({ menus }) => {
         </S.Menu>
       ))}
       <S.Description>
-        *메뉴와 가격은 레스토랑 사정에 따라 달라질 수 있습니다.
+        * 메뉴와 가격은 레스토랑 사정에 따라 달라질 수 있습니다.
       </S.Description>
     </>
   );
