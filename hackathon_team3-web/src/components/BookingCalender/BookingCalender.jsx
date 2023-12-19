@@ -24,6 +24,11 @@ const BookingCalender = ({ store, storeId, setIsBookingOpen }) => {
   const [timeComponents, setTimeComponents] = useState();
 
   const [term, setTerm] = useState();
+  const [peopleNum, setPeopleNum] = useState(1);
+
+  // const setReservationPeopleNum = useState(
+  //   (state) => state.setReservationPeopleNum
+  // );
 
   const setMembers = (member) => {
     setSelectedMember(member);
@@ -155,6 +160,11 @@ const BookingCalender = ({ store, storeId, setIsBookingOpen }) => {
     setIsNext(true);
     console.log(isNext)
   }
+
+  const handlePeopleButton = (index) => {
+    const peopleCount = index + 1;
+    setPeopleNum(peopleCount);
+  }
   
   return (
     !isNext ? 
@@ -182,13 +192,28 @@ const BookingCalender = ({ store, storeId, setIsBookingOpen }) => {
           marginLeft: '20px'
         }}></div>
       <S.BookingMemberContainer>
-        {memberComponents}
+        {/* {memberComponents} */}
+        <S.ReservationPeople>
+          {[...Array(20)].map((_, index) => (
+            <S.PeopleButton
+            key={index}
+            onClick={
+              () => {
+                handlePeopleButton(index);
+                // setReservationPeopleNum(index+1);
+              }
+            }
+            isActive={peopleNum === index + 1}>
+              {index + 1}명
+            </S.PeopleButton>
+          ))}
+        </S.ReservationPeople>
       </S.BookingMemberContainer>
       <S.BookingTimeContainer>
         {timeComponents}
       </S.BookingTimeContainer>
     </BookingBar>)
-    : (<BookingCheck store={store} nowDate={nowDate} nowDay={nowDay} setIsBookingOpen={setIsBookingOpen} selectedMember={selectedMember} time={times}></BookingCheck>)
+    : (<BookingCheck store={store} nowDate={nowDate} nowDay={nowDay} setIsBookingOpen={setIsBookingOpen} selectedMember={peopleNum} time={times}></BookingCheck>)
   );
    
 };
