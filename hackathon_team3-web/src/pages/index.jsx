@@ -14,13 +14,13 @@ const Router = () => {
           element: <Home />,
         },
         {
-          path: "/store",
+          path: "/:storeId",
           element: <Store />,
         },
         {
           path: "/booking",
           element: <Booking />,
-        }
+        },
       ],
     },
   ]);

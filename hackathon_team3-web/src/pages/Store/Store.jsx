@@ -1,34 +1,68 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 import * as S from "./Store.styles";
 import { ArrowLeft, Home, BookMark, Share, Call } from "../../asset";
 import Tab from "../../components/Tab/Tab";
-import { useNavigate } from "react-router-dom";
+
 import Booking from "../Booking/Booking";
+import StorePhotoSlider from "../../components/StorePhotoSlider/StorePhotoSlider";
 
 const Store = () => {
-  const menus = [
-    { name: "철판쭈꾸미", price: 14000 },
-    { name: "소금구이", price: 15000 },
-    { name: "철판쭈꾸미삼겹", price: 16000 },
-  ];
-  const photos = ["1", "2", "3", "4", "5", "6", "7"];
-  const reviews = [
-    {
-      user: "부드러운 맛사냥꾼_99356",
-      rate: 5.0,
-      date: "2023.12.10",
-      photo: "photo",
-      description:
-        "가나다라마바사아자차카타파하샤라랄라랄랆ㄴㅇㄹㄴㅇㅁㄹㅇㅇㄹㄷㄱㄴㅇㄻㄷㄱ",
-    },
-    {
-      user: "김아현이",
-      rate: 5.0,
-      date: "2023.11.15",
-      photo: "photo",
-      description: "요기 맛난데.. 줄설정돈가.. 좋았어요 ^^",
-    },
-  ];
+  const { storeId } = useParams();
+  const [store, setStore] = useState();
+  const [reviews, setReviews] = useState();
+  const fetchStore = async () => {
+    try {
+      const res = await fetch(
+        `http://192.168.107.231:8080/restaurants/${storeId}`
+      );
+      const result = await res.json();
+      setStore(result.result);
+      setMenus(result.result.menuList);
+      setStorePhotos(result.result.restaurantImages);
+      console.log(store);
+    } catch (err) {
+      console.error("Error fetching data: ", err);
+    }
+  };
+
+  const fetchReviews = async () => {
+    try {
+      const res = await fetch(
+        `http://192.168.107.231:8080/restaurants/${storeId}/reviews`
+      );
+      const result = await res.json();
+      setReviews(result.result);
+      console.log(reviews);
+    } catch (err) {
+      console.error("Error fetching data: ", err);
+    }
+  };
+
+  const fetchPhotos = async () => {
+    try {
+      const res = await fetch(
+        `http://192.168.107.231:8080/restaurants/${storeId}/images`
+      );
+      const result = await res.json();
+      setPhotos(result.result);
+      console.log(reviews);
+    } catch (err) {
+      console.error("Error fetching data: ", err);
+    }
+  };
+
+  useEffect(() => {
+    fetchStore();
+    console.log("Store: ", store);
+    fetchReviews();
+    console.log("Reviews :", reviews);
+    fetchPhotos();
+    console.log("Photos :", photos);
+  }, []);
+  const [menus, setMenus] = useState();
+  const [storePhotos, setStorePhotos] = useState();
+  const [photos, setPhotos] = useState();
   const [isAvailable, setIsAvailable] = useState(true);
   const [isBookingOpen, setIsBookingOpen] = useState(false);
 
@@ -37,6 +71,9 @@ const Store = () => {
       setIsBookingOpen(true);
     }
   };
+  if (!store || !photos || !reviews) {
+    return <div>가게를 찾을 수 없어요 🥺</div>;
+  }
   return (
     <>
       <S.Header>
@@ -49,39 +86,35 @@ const Store = () => {
           <Share />
         </div>
       </S.Header>
-      <S.StoreImage></S.StoreImage>
+      <StorePhotoSlider photos={storePhotos} />
       <S.StoreInfoBox>
-        <h3>음식점이름</h3>
-        <p>음식점 소개</p>
+        <h3>{store.name}</h3>
+        <p>{store.briefInfo}</p>
         <span className="info">
-          <p>음식 종류 </p> • <p>지역</p>
+          <p>{store?.category} </p> • <p>{store.region}</p>
         </span>
         <span className="rates">
           <span className="star">★</span>
-          <span className="rate">4.3</span>
-          <span className="review">(333)</span>
+          <span className="rate">{store.rating.toFixed(1)}</span>
+          <span className="review">({reviews.length})</span>
         </span>
       </S.StoreInfoBox>
-      <S.AddBar>
-        <p>레스토랑 함께 고르기</p>
-        <button className="add-btn">+담기</button>
-      </S.AddBar>
       <Tab menus={menus} photos={photos} reviews={reviews} />
       <S.Location>
         <h4>매장 위치</h4>
-        <p>매장 주소</p>
+        <p>{store.address}</p>
       </S.Location>
       <S.DetailInfo>
         <h4>상세정보</h4>
         <p className="title">전화번호</p>
         <span className="call">
           <Call />
-          <span className="phone-number">050-71409-6602</span>
+          <span className="phone-number">{store.phoneNumber}</span>
         </span>
         <p className="title">매장 소개</p>
-        <span className="info">안녕하세요</span>
+        <span className="info">{store.description}</span>
         <p className="title">영업시간</p>
-        <span className="info">11:30 - 23:00</span>
+        <span className="info">{store.operatingHour}</span>
       </S.DetailInfo>
       <S.Footer>
         <BookMark />
@@ -92,7 +125,9 @@ const Store = () => {
           {isAvailable ? "웨이팅 등록하기" : "바로 입장 가능해요"}
         </S.BookingButton>
       </S.Footer>
-      {isBookingOpen ? <Booking setIsBookingOpen={setIsBookingOpen} /> : null}
+      {isBookingOpen ? (
+        <Booking storeId={storeId} setIsBookingOpen={setIsBookingOpen} />
+      ) : null}
     </>
   );
 };

@@ -5,7 +5,7 @@ const Photos = ({ photos }) => {
   return (
     <S.PhotosContainer>
       {photos.map((photo, index) => (
-        <S.Photo key={index} src={photo} alt="사진" />
+        <S.Photo key={index} src={photo.imageUrl} alt="사진" />
       ))}
     </S.PhotosContainer>
   );

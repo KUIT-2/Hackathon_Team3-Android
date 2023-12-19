@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const Header = styled.div`
+  z-index: 1;
   display: flex;
   justify-content: space-between;
   width: 100%;
@@ -14,11 +15,6 @@ export const Header = styled.div`
     gap: 15px;
     align-items: center;
   }
-`;
-
-export const StoreImage = styled.div`
-  height: 250px;
-  background-color: #d9d9d9;
 `;
 
 export const StoreInfoBox = styled.div`
@@ -45,25 +41,6 @@ export const StoreInfoBox = styled.div`
     .review {
       color: #989898;
     }
-  }
-`;
-
-export const AddBar = styled.div`
-  display: flex;
-  justify-content: space-between;
-  padding: 10px 20px;
-  border-bottom: 9px solid #d9d9d9;
-  p {
-    font-weight: bold;
-    display: flex;
-    align-items: center;
-  }
-  .add-btn {
-    border-radius: 20px;
-    border: 2px solid #d9d9d9;
-    background-color: white;
-    font-size: 14px;
-    padding: 7px 10px;
   }
 `;
 

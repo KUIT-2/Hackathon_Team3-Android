@@ -1,26 +1,27 @@
 import styled from "styled-components";
 
 export const BookingCalenderHeader = styled.div`
-    display: flex;
-`
+  display: flex;
+`;
 
 export const BookingCalenderToday = styled.div`
-    position: absolute;
-    margin-top: 32px;
-    margin-left: 32px;
-    color: #ff3d00;
-    font-size: 14px;
-    text-decoration: underline;
-`
+  position: absolute;
+  margin-top: 32px;
+  margin-left: 32px;
+  color: #ff3d00;
+  font-size: 14px;
+  text-decoration: underline;
+`;
 
 export const CalendarContainer = styled.div`
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
 
-    .calendar {
-        margin-top: 16px;
-        line-height: 2rem;
-        font-size: 16px;
+  .calendar {
+    margin-top: 16px;
+    line-height: 2rem;
+    font-size: 16px;
+
 
         .react-calendar__navigation {
             display: flex;
@@ -47,15 +48,16 @@ export const CalendarContainer = styled.div`
         }
     }
 `
+
 export const BookingMemberContainer = styled.div`
-    display: flex;
-    width: 100%;
-    overflow-x: auto;
-    white-space: nowrap;
-    margin-top: 20px;
-    margin-left: 24px;
-    gap: 12px;
-`
+  display: flex;
+  width: 100%;
+  overflow-x: auto;
+  white-space: nowrap;
+  margin-top: 20px;
+  margin-left: 24px;
+  gap: 12px;
+`;
 
 export const BookingTimeContainer = styled.div`
     display: flex;

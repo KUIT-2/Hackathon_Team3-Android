@@ -12,6 +12,7 @@ const Bottom = styled.div`
     box-sizing: border-box;
     display: flex;
     justify-content : space-between;
+    background: #FFF;
 `;
 
 const Btn = styled.div`
