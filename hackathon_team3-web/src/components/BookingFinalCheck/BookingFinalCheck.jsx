@@ -8,7 +8,7 @@ import { IconCalender, IconClock, IconUsers, IconUncheck } from "../../assets/in
 
 const BookingFinalCheck = () => {
   return (
-    <BookingBar>
+    <BookingBar leftBtn={"취소"} rightBtn={"예약 확정"}>
         <O.BookingCheckHeading>예약을 최종 확정하시겠어요?</O.BookingCheckHeading>
         <div style={{background: '#D9D9D9', height: '3px',}}></div>
         <O.BookingCheckName>센시티브서울</O.BookingCheckName>
