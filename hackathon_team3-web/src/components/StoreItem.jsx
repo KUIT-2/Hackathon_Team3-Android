@@ -3,6 +3,8 @@ import styled from 'styled-components';
 
 import { StarIcon, BookmarkIcon2 } from "../assets/index";
 
+import { useNavigate } from 'react-router-dom';
+
 const StoreImage = styled.img`
   width: 180px;
   height: 180px;
@@ -45,8 +47,13 @@ const StoreCategory = styled.div`
 `;
 
 const StoreItem = ({store}) => {
+    const navigate = useNavigate();
+    const handleEnterStore = () => {
+        navigate(`${store.restaurantId}`);
+    };
+
     return (
-        <div>
+        <div onClick={handleEnterStore} type="button">
             <StoreImage src={store.imageUrl}/>
                 <BookmarkInfo>
                     <StoreInfo>
