@@ -18,7 +18,7 @@ const Store = () => {
   const fetchStore = async () => {
     try {
       const res = await fetch(
-        `http://192.168.107.231:8080/restaurants/${storeId}`
+        `http://52.79.169.113:8080/restaurants/${storeId}`
       );
       const result = await res.json();
       setStore(result.result);
@@ -33,7 +33,7 @@ const Store = () => {
   const fetchReviews = async () => {
     try {
       const res = await fetch(
-        `http://192.168.107.231:8080/restaurants/${storeId}/reviews`
+        `http://52.79.169.113:8080/restaurants/${storeId}/reviews`
       );
       const result = await res.json();
       setReviews(result.result);
@@ -46,7 +46,7 @@ const Store = () => {
   const fetchPhotos = async () => {
     try {
       const res = await fetch(
-        `http://192.168.107.231:8080/restaurants/${storeId}/images`
+        `http://52.79.169.113:8080/restaurants/${storeId}/images`
       );
       const result = await res.json();
       setPhotos(result.result);
