@@ -37,17 +37,16 @@ export const BookingCheckContainer = styled.div`
 `
 
 export const Icon = styled.div`
-    margin-right: 48px;
+    margin-right: 38px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
 `
 
 export const IconLabel = styled.span`
     color: #222;
     margin-top: 12px;
-    text-size: 12px;
+    font-size: 14px;
     text-align: center;
 `
 

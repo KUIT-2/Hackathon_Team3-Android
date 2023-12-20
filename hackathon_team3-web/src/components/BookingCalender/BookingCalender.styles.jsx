@@ -94,9 +94,8 @@ export const TimeButton = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  display: flex;
   padding: 10px;
-  width: 160px;
+  width: 90px;
   height: 39px;
   border: 1px solid #d9d9d9;
   cursor: pointer;
@@ -104,6 +103,12 @@ export const TimeButton = styled.div`
   color: ${(props) => (props.isActive ? '#FFF' : "#000")};
   margin: 10px;
   flex-shrink: 0;
+  border-radius: 4px;
+  align-items: center;
+
+  font-size: 14px;
+  color: #fff;
+  background: #ff3d00;
 `;
 
 export const BookingMember = styled.div`
