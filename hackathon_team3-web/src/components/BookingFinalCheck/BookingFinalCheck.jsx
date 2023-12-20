@@ -8,7 +8,7 @@ import { IconCalender, IconClock, IconUsers, IconUncheck } from "../../assets/in
 import { useState } from 'react';
 import BookingFinish from './../BookingFinish/BookingFinish';
 
-const BookingFinalCheck = ({ store, nowDate, nowDay, selectedMember, time, setIsBookingOpen }) => {
+const BookingFinalCheck = ({ store, nowDate, nowDay, selectedMember, times, setIsBookingOpen }) => {
 
   const [isNext, setIsNext] = useState(false);
 
@@ -31,7 +31,7 @@ const BookingFinalCheck = ({ store, nowDate, nowDay, selectedMember, time, setIs
             </O.Icon>
             <O.Icon>
                 <IconClock></IconClock>
-                <O.IconLabel>{time}</O.IconLabel>
+                <O.IconLabel>{times}</O.IconLabel>
             </O.Icon>
             <O.Icon style={{'marginRight': '0px'}}>
                 <IconUsers></IconUsers>
@@ -48,7 +48,7 @@ const BookingFinalCheck = ({ store, nowDate, nowDay, selectedMember, time, setIs
             <S.BookingCheckInputLabel>다시 보지 않기</S.BookingCheckInputLabel>
         </S.BookingCheckInput>
     </BookingBar>
-    ) : (<BookingFinish store={store} nowDate={nowDate} nowDay={nowDay} selectedMember={selectedMember} time={time} setIsBookingOpen={setIsBookingOpen}></BookingFinish>)
+    ) : (<BookingFinish store={store} nowDate={nowDate} nowDay={nowDay} selectedMember={selectedMember} time={times} setIsBookingOpen={setIsBookingOpen}></BookingFinish>)
     
   )
 }
