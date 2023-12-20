@@ -31,7 +31,7 @@ const BookingFinalCheck = ({ store, nowDate, nowDay, selectedMember, times, setI
             </O.Icon>
             <O.Icon>
                 <IconClock></IconClock>
-                <O.IconLabel>{times}</O.IconLabel>
+                <O.IconLabel>13 : 30</O.IconLabel>
             </O.Icon>
             <O.Icon style={{'marginRight': '0px'}}>
                 <IconUsers></IconUsers>

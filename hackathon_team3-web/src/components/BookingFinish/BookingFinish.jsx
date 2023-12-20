@@ -20,7 +20,7 @@ const BookingFinish = ({ store, nowDate, nowDay, selectedMember, times, setIsBoo
         </S.BookingStoreContainer>
         <S.BookingDateContainer>
             <S.BookingDateLabel>예약일시</S.BookingDateLabel>
-            <S.BookingDate>{nowDate} ({nowDay}) {times} {selectedMember}명</S.BookingDate>
+            <S.BookingDate>{nowDate} ({nowDay}) 13 : 30 {selectedMember}명</S.BookingDate>
         </S.BookingDateContainer>
     </BookingBar>
   )

@@ -13,6 +13,8 @@ import BookingCheck from "../BookingCheck/BookingCheck";
 const BookingCalender = ({ store, storeId, setIsBookingOpen }) => {
   const [isNext, setIsNext] = useState(false);
 
+  const date = "13:30";
+
   const numberOfMembers = 20;
   const [selectedMember, setSelectedMember] = useState(0);
 
@@ -255,7 +257,7 @@ const BookingCalender = ({ store, storeId, setIsBookingOpen }) => {
         </S.ReservationTime>
       </S.BookingTimeContainer>
     </BookingBar>)
-    : (<BookingCheck store={store} nowDate={nowDate} nowDay={nowDay} setIsBookingOpen={setIsBookingOpen} selectedMember={peopleNum} time={selectedTime}></BookingCheck>)
+    : (<BookingCheck store={store} nowDate={nowDate} nowDay={nowDay} setIsBookingOpen={setIsBookingOpen} selectedMember={peopleNum}></BookingCheck>)
   );
    
 };

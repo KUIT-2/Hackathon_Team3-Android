@@ -30,7 +30,7 @@ const BookingCheck = ({ store, nowDate, nowDay, setIsBookingOpen, selectedMember
             </S.Icon>
             <S.Icon>
                 <IconClock></IconClock>
-                <S.IconLabel>{times}</S.IconLabel>
+                <S.IconLabel>13 : 30</S.IconLabel>
             </S.Icon>
             <S.Icon style={{'marginRight': '0px'}}>
                 <IconUsers></IconUsers>
