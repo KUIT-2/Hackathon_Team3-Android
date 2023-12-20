@@ -18,7 +18,7 @@ const BookingCheck = ({ store, nowDate, nowDay, setIsBookingOpen, selectedMember
     !isNext ? (
         <BookingBar leftBtn={"취소"} rightBtn={"확인"} setIsBookingOpen={setIsBookingOpen} rightBtnOnClick={() => handleRightBtnClick()}
         leftBtnOnClick={() => setIsBookingOpen(false)}>
-        <S.BookingCheckHeading>내일 방문이 맞으신가요?</S.BookingCheckHeading>
+        <S.BookingCheckHeading>{nowDate} 방문이 맞으신가요?</S.BookingCheckHeading>
         <div style={{background: '#D9D9D9', height: '3px',}}></div>
         <S.BookingCheckSubheading>방문 일정을 다시 한 번 확인해 주세요.</S.BookingCheckSubheading>
         <S.BookingCheckName>{store.name}</S.BookingCheckName>
